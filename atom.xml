@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://hzebin.github.io/"/>
   <updated>2019-01-24T08:45:32.957Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://hzebin.github.io/</id>
   
   <author>
     <name>Huang Zebin</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>链接分享 -- 程序员在线工具</title>
-    <link href="http://yoursite.com/2019/01/24/%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB%20--%20%E7%A8%8B%E5%BA%8F%E5%91%98%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7/"/>
-    <id>http://yoursite.com/2019/01/24/链接分享 -- 程序员在线工具/</id>
+    <link href="https://hzebin.github.io/2019/01/24/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/"/>
+    <id>https://hzebin.github.io/2019/01/24/友情链接/</id>
     <published>2019-01-24T08:10:55.000Z</published>
     <updated>2019-01-24T08:45:32.957Z</updated>
     
@@ -38,14 +38,14 @@
     </summary>
     
     
-      <category term="links" scheme="http://yoursite.com/tags/links/"/>
+      <category term="links" scheme="https://hzebin.github.io/tags/links/"/>
     
   </entry>
   
   <entry>
     <title>test</title>
-    <link href="http://yoursite.com/2019/01/20/test/"/>
-    <id>http://yoursite.com/2019/01/20/test/</id>
+    <link href="https://hzebin.github.io/2019/01/20/test/"/>
+    <id>https://hzebin.github.io/2019/01/20/test/</id>
     <published>2019-01-20T07:25:54.000Z</published>
     <updated>2019-01-20T07:25:54.168Z</updated>
     
@@ -58,8 +58,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2019/01/20/hello-world/"/>
-    <id>http://yoursite.com/2019/01/20/hello-world/</id>
+    <link href="https://hzebin.github.io/2019/01/20/hello-world/"/>
+    <id>https://hzebin.github.io/2019/01/20/hello-world/</id>
     <published>2019-01-20T07:24:37.142Z</published>
     <updated>2017-10-28T00:39:58.000Z</updated>
     
