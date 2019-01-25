@@ -113,12 +113,25 @@
     <link href="https://hzebin.github.io/2019/01/20/test/"/>
     <id>https://hzebin.github.io/2019/01/20/test/</id>
     <published>2019-01-20T07:25:54.000Z</published>
-    <updated>2019-01-20T07:25:54.168Z</updated>
+    <updated>2019-01-25T07:20:17.104Z</updated>
+    
+    <content type="html"><![CDATA[<p>@card{</p><p>在<code>page</code>页中，建议把内容都放到<code>card</code>中。</p><p>}</p><p>@timeline{</p><h5 id="2016"><a href="#2016" class="headerlink" title="2016"></a>2016</h5><p>@item{</p><h6 id="11月6日"><a href="#11月6日" class="headerlink" title="11月6日"></a>11月6日</h6><p>为 Card theme 添加 page layout。<br>}<br>}</p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;@card{&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;page&lt;/code&gt;页中，建议把内容都放到&lt;code&gt;card&lt;/code&gt;中。&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;@timeline{&lt;/p&gt;
+&lt;h5 id=&quot;2016&quot;&gt;&lt;a href=&quot;#2016&quot; class=&quot;header
+      
+    
     </summary>
     
+    
+      <category term="test" scheme="https://hzebin.github.io/tags/test/"/>
     
   </entry>
   
