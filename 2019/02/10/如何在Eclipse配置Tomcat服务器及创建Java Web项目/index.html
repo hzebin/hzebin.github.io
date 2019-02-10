@@ -21,13 +21,13 @@
     
     
     <meta name="keywords" content="Tomcat,Eclipse,JSP Web">
-    <meta name="description" content="##配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace ##在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
+    <meta name="description" content="配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace 在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
 <meta name="keywords" content="Tomcat,Eclipse,JSP Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在Eclipse配置Tomcat服务器及创建Java Web项目">
 <meta property="og:url" content="http://blog.hzebin.cn/2019/02/10/如何在Eclipse配置Tomcat服务器及创建Java Web项目/index.html">
 <meta property="og:site_name" content="Hzebin 黄泽彬的博客">
-<meta property="og:description" content="##配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace ##在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
+<meta property="og:description" content="配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace 在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c0f3c87.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c1064a7.png">
@@ -35,20 +35,21 @@
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c0e60b7.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c0e7979.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c15641e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603a0983b08.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c149066.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c159611.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c14fba9.png">
 <meta property="og:image" content="https://i.loli.net/2019/02/10/5c6036c18ae06.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210102157992.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210102336395.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210102542212.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210103210414.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210103334503.png">
-<meta property="og:image" content="http://blog.hzebin.cn/20190210214434998/20190210103536653.png">
-<meta property="og:updated_time" content="2019-02-10T14:36:32.692Z">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603a4cd83d4.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603a82dc736.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603aa28720e.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603ac317c91.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603ad981164.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/10/5c603b02294ef.png">
+<meta property="og:updated_time" content="2019-02-10T14:54:05.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在Eclipse配置Tomcat服务器及创建Java Web项目">
-<meta name="twitter:description" content="##配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace ##在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
+<meta name="twitter:description" content="配置前的准备1.通过Tomcat官网链接 http://tomcat.apache.org/ 下载合适的Tomcat2.安装好Eclipse Jee Neon3.配置好Java的JDK，新建Eclipse的workplace 在Eclipse Jee中配置Tomcat点击上边栏Window里的Preferences选项，出现下图">
 <meta name="twitter:image" content="https://i.loli.net/2019/02/10/5c6036c0f3c87.png">
     
         <link rel="alternate" type="application/atom+xml" title="Hzebin 黄泽彬的博客" href="/atom.xml">
@@ -227,6 +228,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置前的准备"><span class="post-toc-number">1.</span> <span class="post-toc-text">配置前的准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Eclipse-Jee中配置Tomcat"><span class="post-toc-number">2.</span> <span class="post-toc-text">在Eclipse Jee中配置Tomcat</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#新建JSP-Web项目"><span class="post-toc-number">3.</span> <span class="post-toc-text">新建JSP Web项目</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-如何在Eclipse配置Tomcat服务器及创建Java Web项目" class="post-article article-type-post fade" itemprop="blogPost">
 
@@ -246,8 +254,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>##配置前的准备<br>1.通过Tomcat官网链接 <a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a> 下载合适的Tomcat<br>2.安装好Eclipse Jee Neon<br>3.配置好Java的JDK，新建Eclipse的workplace</p>
-<p>##在Eclipse Jee中配置Tomcat<br>点击上边栏Window里的Preferences选项，出现下图<br><figure class="image-bubble">
+            <h2 id="配置前的准备"><a href="#配置前的准备" class="headerlink" title="配置前的准备"></a>配置前的准备</h2><p>1.通过Tomcat官网链接 <a href="http://tomcat.apache.org/" target="_blank" rel="noopener">http://tomcat.apache.org/</a> 下载合适的Tomcat<br>2.安装好Eclipse Jee Neon<br>3.配置好Java的JDK，新建Eclipse的workplace</p>
+<h2 id="在Eclipse-Jee中配置Tomcat"><a href="#在Eclipse-Jee中配置Tomcat" class="headerlink" title="在Eclipse Jee中配置Tomcat"></a>在Eclipse Jee中配置Tomcat</h2><p>点击上边栏Window里的Preferences选项，出现下图<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://i.loli.net/2019/02/10/5c6036c0f3c87.png" alt="" title="">
@@ -286,6 +294,12 @@
             </figure><br>出现下图显示的Tomcat服务器并双击它<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/02/10/5c603a0983b08.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
                     <img src="https://i.loli.net/2019/02/10/5c6036c149066.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
@@ -308,41 +322,41 @@
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
-<p>##新建JSP Web项目<br>在eclipse左侧空白处，右键选择New-&gt;Dynamic Web Project（或者左上角File-&gt;New-&gt;Dynamic Web Project）。若New的选择列表中没有Dynamic Web Project，则选择Others，然后输入dynamic（一般输入dy就可以），选择Dynamic Web Project。出现如下图<br><figure class="image-bubble">
+<h2 id="新建JSP-Web项目"><a href="#新建JSP-Web项目" class="headerlink" title="新建JSP Web项目"></a>新建JSP Web项目</h2><p>在eclipse左侧空白处，右键选择New-&gt;Dynamic Web Project（或者左上角File-&gt;New-&gt;Dynamic Web Project）。若New的选择列表中没有Dynamic Web Project，则选择Others，然后输入dynamic（一般输入dy就可以），选择Dynamic Web Project。出现如下图<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210102157992.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603a4cd83d4.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>选择好之后点击next -&gt; next如下所示<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210102336395.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603a82dc736.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>修改根目录文件名为WebRoot，下面打勾，最后点击finish<br>此时项目创建完毕，结果如下图的项目文件结构：<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210102542212.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603aa28720e.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
 <p>jsp项目需要写在WebRoot文件夹内，右击WebRoot添加Jsp File文件并编辑代码<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210103210414.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603ac317c91.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>右击Tomcat服务器选择Add and Remove，将Hello项目向右部署到服务器<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210103334503.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603ad981164.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure><br>右击启动start Tomcat服务器或restart<br>在浏览器输入正确的URL则可以看到部署的JSP网页<br><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/20190210214434998/20190210103536653.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/02/10/5c603b02294ef.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure></p>
@@ -354,7 +368,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-02-10T14:36:32.692Z" itemprop="dateUpdated">2019-02-10 22:36:32</time>
+    Last updated: <time datetime="2019-02-10T14:54:05.861Z" itemprop="dateUpdated">2019-02-10 22:54:05</time>
 </span><br>
 
 
