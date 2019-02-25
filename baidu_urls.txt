@@ -1,3 +1,5 @@
+http://blog.hzebin.cn/2019/02/25/在MyEclipse开发JSP的初学小知识/
+http://blog.hzebin.cn/2019/02/25/初学在MyEclipse下开发JSP页面/
 http://blog.hzebin.cn/2019/02/10/如何在Eclipse配置Tomcat服务器及创建Java Web项目/
 http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/
 http://blog.hzebin.cn/2019/01/25/利用python的turtle库绘画（随机花蕾）/
