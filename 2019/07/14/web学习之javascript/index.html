@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>web学习之javascript | Hzebin 黄泽彬的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="web前端">
+    <meta name="description" content="eg:                                                                                             20190714C01.jpg              eg:外部引入js文件">
+<meta name="keywords" content="web前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web学习之javascript">
+<meta property="og:url" content="http://blog.hzebin.cn/2019/07/14/web学习之javascript/index.html">
+<meta property="og:site_name" content="Hzebin 黄泽彬的博客">
+<meta property="og:description" content="eg:                                                                                             20190714C01.jpg              eg:外部引入js文件">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/07/14/5d2b0ff59c3a088143.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/07/14/5d2b11a00e14f26287.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/07/14/5d2b12513d4a856092.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/07/14/5d2b1f2186ff184575.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/07/14/5d2b20b45cbf023010.jpg">
+<meta property="og:updated_time" content="2019-07-14T12:48:47.415Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web学习之javascript">
+<meta name="twitter:description" content="eg:                                                                                             20190714C01.jpg              eg:外部引入js文件">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/14/5d2b0ff59c3a088143.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hzebin 黄泽彬的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+	<meta name="google-site-verification" content="eAXXb43fsX6NPGfUvts-Al_uzs7cWUWQtIg9C-qUAY4">
+	
+	<script>
+		var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?33409547ad70871e523a243cd3882005";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+
+	
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Huang Zebin</h5>
+          <a href="mailto:1747132327@qq.com" title="1747132327@qq.com" class="mail">1747132327@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank">
+                <i class="icon icon-lg icon-code"></i>
+                CSDN算法刷题本
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/liuyan">
+                <i class="icon icon-lg icon-clipboard"></i>
+                留言板
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links">
+                <i class="icon icon-lg icon-link"></i>
+                友情链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/footprint">
+                <i class="icon icon-lg icon-fly"></i>
+                成长足迹
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/test">
+                <i class="icon icon-lg icon-tachometer-alt-slowest"></i>
+                test area
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">web学习之javascript</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">web学习之javascript</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-07-14T09:49:00.000Z" itemprop="datePublished" class="page-time">
+  2019-07-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-web学习之javascript"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">web学习之javascript</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-07-14 17:49:00" datetime="2019-07-14T09:49:00.000Z" itemprop="datePublished">2019-07-14</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>eg:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/14/5d2b0ff59c3a088143.jpg" alt="20190714C01.jpg" title="">
+                </div>
+                <div class="image-caption">20190714C01.jpg</div>
+            </figure></p>
+<p>eg:外部引入js文件<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/14/5d2b11a00e14f26287.jpg" alt="20190714C02.jpg" title="">
+                </div>
+                <div class="image-caption">20190714C02.jpg</div>
+            </figure></p>
+<p>我们可以将JavaScript代码放在html文件中任何位置:<br>放在<head><meta name="generator" content="Hexo 3.8.0">部分,浏览器解析head部分就会执行这个代码，然后才解析页面的其余部分。<br>放在</head><body>部分,JavaScript代码在网页读取到该语句的时候就会执行。</body></p>
+<p>注意: javascript作为一种脚本语言可以放在html页面中任何位置，但是浏览器解释html时是按先后顺序的，所以前面的script就先被执行。比如进行页面显示初始化的js必须放在head里面，因为初始化都要求提前进行（如给页面body设置css等）；而如果是通过事件调用执行的function那么对位置没什么要求的。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/14/5d2b12513d4a856092.jpg" alt="20190714C03.jpg" title="">
+                </div>
+                <div class="image-caption">20190714C03.jpg</div>
+            </figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">javascript注释</span><br><span class="line"></span><br><span class="line">//单行注释</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">asasd</span><br><span class="line">多行注释</span><br><span class="line">asdasd</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>定义变量使用关键字var,语法如下：<br>var 变量名<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">变量名可以任意取名，但要遵循命名规则:</span><br><span class="line">    1.变量必须使用字母、下划线(_)或者美元符($)开始。</span><br><span class="line">    2.然后可以使用任意多个英文字母、数字、下划线(_)或者美元符($)组成。</span><br><span class="line">    3.不能使用JavaScript关键词与JavaScript保留字。</span><br><span class="line"></span><br><span class="line">变量要先声明再赋值，如下：</span><br><span class="line">var mychar;</span><br><span class="line">mychar="javascript";</span><br><span class="line">var mynum = 6;</span><br><span class="line"></span><br><span class="line">变量可以重复赋值，如下：</span><br><span class="line">var mychar;</span><br><span class="line">mychar="javascript";</span><br><span class="line">mychar="hello";</span><br><span class="line"></span><br><span class="line">注意:</span><br><span class="line">1. 在JS中区分大小写，如变量mychar与myChar是不一样的，表示是两个变量。</span><br><span class="line">2. 变量虽然也可以不声明，直接使用，但不规范，需要先声明，后使用。</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript-判断语句（if…else）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">语法:</span><br><span class="line">if(条件)</span><br><span class="line">&#123; 条件成立时执行的代码 &#125;</span><br><span class="line">else</span><br><span class="line">&#123; 条件不成立时执行的代码 &#125;</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">   var myage = 18;</span></span><br><span class="line"><span class="undefined">   if(myage&gt;=18)  //myage&gt;=18是判断条件</span></span><br><span class="line"><span class="undefined">   &#123; document.write("你是成年人。");&#125;</span></span><br><span class="line"><span class="undefined">   else  //否则年龄小于18</span></span><br><span class="line"><span class="undefined">   &#123; document.write("未满18岁，你不是成年人。");&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>javascript函数定义：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">基本语法如下:</span><br><span class="line">function 函数名()</span><br><span class="line">&#123;</span><br><span class="line">     函数代码;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>eg:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/14/5d2b1f2186ff184575.jpg" alt="20190714C04.jpg" title="">
+                </div>
+                <div class="image-caption">20190714C04.jpg</div>
+            </figure></p>
+<p>JavaScript-输出内容（document.write）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">document.write() 可用于直接向 HTML 输出流写内容。简单的说就是直接在网页中输出内容。</span><br><span class="line"></span><br><span class="line">第一种:输出内容用""括起，直接输出""号内的内容。</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  document.write("I love JavaScript！"); //内容用""括起来，""里的内容直接输出。</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">第二种:通过变量，输出内容</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var mystr="hello world!";</span></span><br><span class="line"><span class="undefined">  document.write(mystr);  //直接写变量名，输出变量存储的内容。</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">第三种:输出多项内容，内容之间用+号连接。</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var mystr="hello";</span></span><br><span class="line"><span class="undefined">  document.write(mystr+"I love JavaScript"); //多项内容之间用+号连接</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">第四种:输出HTML标签，并起作用，标签使用""括起来。</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  var mystr="hello";</span></span><br><span class="line"><span class="xml">document.write(mystr+"<span class="tag">&lt;<span class="name">br</span>&gt;</span>");//输出hello后，输出一个换行符</span></span><br><span class="line"><span class="undefined">  document.write("JavaScript");</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>关于空格的eg:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2019/07/14/5d2b20b45cbf023010.jpg" alt="20190714C05.jpg" title="">
+                </div>
+                <div class="image-caption">20190714C05.jpg</div>
+            </figure></p>
+<p>JavaScript-警告（alert 消息对话框）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">我们在访问网站的时候，有时会突然弹出一个小窗口，上面写着一段提示信息文字。如果你不点击“确定”，就不能对网页做任何操作，这个小窗口就是使用alert实现的。</span><br><span class="line"></span><br><span class="line">语法: </span><br><span class="line">alert(字符串或变量);  </span><br><span class="line"></span><br><span class="line">看下面的代码:</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">   var mynum = 30;</span></span><br><span class="line"><span class="undefined">   alert("hello!");</span></span><br><span class="line"><span class="undefined">   alert(mynum);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>JavaScript-确认（confirm 消息对话框）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">confirm 消息对话框通常用于允许用户做选择的动作，如：“你对吗？”等。弹出对话框(包括一个确定按钮和一个取消按钮)。</span><br><span class="line"></span><br><span class="line">语法:</span><br><span class="line">confirm(str);</span><br><span class="line"></span><br><span class="line">参数说明:</span><br><span class="line">str：在消息对话框中要显示的文本</span><br><span class="line">返回值: Boolean值</span><br><span class="line"></span><br><span class="line">返回值:</span><br><span class="line">当用户点击"确定"按钮时，返回true</span><br><span class="line">当用户点击"取消"按钮时，返回false</span><br><span class="line"></span><br><span class="line">注: 通过返回值可以判断用户点击了什么按钮</span><br><span class="line"></span><br><span class="line">看下面的代码:</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    var mymessage=confirm("你喜欢JavaScript吗?");</span></span><br><span class="line"><span class="undefined">    if(mymessage==true)</span></span><br><span class="line"><span class="undefined">    &#123;   document.write("很好,加油!");   &#125;</span></span><br><span class="line"><span class="undefined">    else</span></span><br><span class="line"><span class="undefined">    &#123;  document.write("JS功能强大，要学习噢!");   &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-07-14T12:48:47.415Z" itemprop="dateUpdated">2019-07-14 20:48:47</time>
+</span><br>
+
+
+        
+        <a href="/2019/07/14/web学习之javascript/" target="_blank" rel="external">http://blog.hzebin.cn/2019/07/14/web学习之javascript/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.hzebin.cn">
+            <img src="/img/avatar.jpg" alt="Huang Zebin">
+            Huang Zebin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web前端/">web前端</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&title=《web学习之javascript》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&title=《web学习之javascript》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/07/14/web学习之javascript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《web学习之javascript》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&via=http://blog.hzebin.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/07/14/web学习之css/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">web学习之css</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "VqT1v8EC0zmGvHnF4Niwwnc6-gzGzoHsz",
+            appKey: "Qe3DgH3JtQjBIXPQGEzWN3p3",
+            avatar: "mm",
+            placeholder: "留言区--上面的三项选填，可直接评论(Can comment anonymously)",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Huang Zebin &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&title=《web学习之javascript》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&title=《web学习之javascript》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/07/14/web学习之javascript/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《web学习之javascript》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/&via=http://blog.hzebin.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/07/14/web学习之javascript/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3aQW7DMAwEwPz/0+m1QBFjV3QKWBqdgsaROT0QIqnXK17vX+vv3z89+ffbZLdPv7phYWBgPJbxvlzXwSWvvN7nes/keQwMjHMYyevbQPM0es24fh4DAwNj7XNLbf99GBgYGPMQkx3yoyEGBgbGvLD8Rjfsi7U4BgbGAxl5EP//+SvzDQwMjEcx3uVqj49t+l6MCgMDY2tGO4a8q9zNdyviwcDAOICRXPxqL2EkO8/HnxgYGCczkhfkmLZtl1xBixIuBgbGdoz2OJgXsXnzbrH1hoGBcSRj3ntvQ8zLVwwMjHMYefNr7ejWtupuG2FiYGBsysgPbWtjy7WmfxQhBgbGkYw8jbbXyCbXMj7mWAwMjK0ZSanZJuL8oHkXFQMDY2/G/1ySmBex9fASAwNjI8Za6HmIeVE6uaiBgYFxAmN+5WJtYNCCo6gwMDA2ZawVsXnqnMwci0YeBgbG1oy1SrA99uUJ94YnMTAwtmPkFyDmwbX7FAdTDAyMYxhJQ61tkOUpezKcwMDAOJPxilcS7tr1r5vvjGBgYDyQ8S5X225LGmrt/kXljYGBsQVjLaXm6XUynpwXwBgYGDsx8iS71g6bXNe4jgEDA+M0xuK1hnKoubZ/UcpiYGBgDFpsSbIu0mt+UwMDA+N4Rp5221/lbUEMDIxzGO0w4K5v83J3NMjEwMB4OCMvHfNDYduAy1PzaKiJgYHxPMYPgjr6CLpxN0QAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
