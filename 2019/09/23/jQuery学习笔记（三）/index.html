@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>jQuery学习笔记（三） | Hzebin 黄泽彬的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="jQuery">
+    <meta name="description" content="jQuery操作DOM 操作元素样式获取样式属性值jQuery中通过css()方法获取样式属性值 语法://获取单个属性：$(selector).css(‘property’);返回结果是字符串形式的属性值 //获取多个属性$(selector).css([‘property1’, ‘property2’, ‘property3’, …]);返回结果是对象形式的属性名和属性值 设置样式属性值jQu">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery学习笔记（三）">
+<meta property="og:url" content="http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/index.html">
+<meta property="og:site_name" content="Hzebin 黄泽彬的博客">
+<meta property="og:description" content="jQuery操作DOM 操作元素样式获取样式属性值jQuery中通过css()方法获取样式属性值 语法://获取单个属性：$(selector).css(‘property’);返回结果是字符串形式的属性值 //获取多个属性$(selector).css([‘property1’, ‘property2’, ‘property3’, …]);返回结果是对象形式的属性名和属性值 设置样式属性值jQu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-26T15:16:22.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery学习笔记（三）">
+<meta name="twitter:description" content="jQuery操作DOM 操作元素样式获取样式属性值jQuery中通过css()方法获取样式属性值 语法://获取单个属性：$(selector).css(‘property’);返回结果是字符串形式的属性值 //获取多个属性$(selector).css([‘property1’, ‘property2’, ‘property3’, …]);返回结果是对象形式的属性名和属性值 设置样式属性值jQu">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hzebin 黄泽彬的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+	<meta name="google-site-verification" content="eAXXb43fsX6NPGfUvts-Al_uzs7cWUWQtIg9C-qUAY4">
+	
+	<script>
+		var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?33409547ad70871e523a243cd3882005";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+
+	
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Huang Zebin</h5>
+          <a href="mailto:1747132327@qq.com" title="1747132327@qq.com" class="mail">1747132327@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank">
+                <i class="icon icon-lg icon-code"></i>
+                CSDN算法刷题本
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/liuyan">
+                <i class="icon icon-lg icon-clipboard"></i>
+                留言板
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links">
+                <i class="icon icon-lg icon-link"></i>
+                友情链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/footprint">
+                <i class="icon icon-lg icon-fly"></i>
+                成长足迹
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/test">
+                <i class="icon icon-lg icon-tachometer-alt-slowest"></i>
+                test area
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">jQuery学习笔记（三）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">jQuery学习笔记（三）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-23T00:25:27.000Z" itemprop="datePublished" class="page-time">
+  2019-09-23
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#操作元素样式"><span class="post-toc-number">1.</span> <span class="post-toc-text">操作元素样式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取样式属性值"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">获取样式属性值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置样式属性值"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">设置样式属性值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通过函数设置样式属性值"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">通过函数设置样式属性值</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#jQuery操作元素类"><span class="post-toc-number">2.</span> <span class="post-toc-text">jQuery操作元素类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作元素的尺寸"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">操作元素的尺寸</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作元素的位置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">操作元素的位置</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-jQuery学习笔记（三）" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">jQuery学习笔记（三）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-23 08:25:27" datetime="2019-09-23T00:25:27.000Z" itemprop="datePublished">2019-09-23</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>jQuery操作DOM</p>
+<h2 id="操作元素样式"><a href="#操作元素样式" class="headerlink" title="操作元素样式"></a>操作元素样式</h2><h3 id="获取样式属性值"><a href="#获取样式属性值" class="headerlink" title="获取样式属性值"></a>获取样式属性值</h3><p>jQuery中通过css()方法获取样式属性值</p>
+<p>语法:<br>//获取单个属性：<br>$(selector).css(‘property’);<br>返回结果是字符串形式的属性值</p>
+<p>//获取多个属性<br>$(selector).css([‘property1’, ‘property2’, ‘property3’, …]);<br>返回结果是对象形式的属性名和属性值</p>
+<h3 id="设置样式属性值"><a href="#设置样式属性值" class="headerlink" title="设置样式属性值"></a>设置样式属性值</h3><p>jQuery中通过css()方法设置样式属性值</p>
+<p>语法：<br>//设置单个属性<br>$(selector).css(‘property’, ‘value’);</p>
+<p>//设置多个属性<br>$(selector).css({‘property1’: ‘value1’, ‘property2’: ‘value2’, …});</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"color: red; font-size: 50px; font-family: '宋体'"</span>&gt;</span></span><br><span class="line">        越努力 越幸运</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"myBtn"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"设置样式"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        //获取样式属性值--单个属性</span></span><br><span class="line"><span class="undefined">        var a = $('div').css('color');</span></span><br><span class="line"><span class="undefined">        console.log(a);  //结果为rgb(255, 0, 0)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        //获取样式属性值--多个属性</span></span><br><span class="line"><span class="undefined">        var obj = $('div').css(['color', 'font-size', 'font-family']);</span></span><br><span class="line"><span class="undefined">        console.log(obj);  //结果为&#123;color: "rgb(255, 0, 0)", font-size: "50px", font-family: "宋体"&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        //设置样式属性--单个属性</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        //设置样式属性--多个属性</span></span><br><span class="line"><span class="undefined">        $('#myBtn').click(function() &#123;</span></span><br><span class="line"><span class="undefined">            $('#d1').css(&#123;background: 'pink', width: '150px', height: '150px', 'border-radius': '50%'&#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="通过函数设置样式属性值"><a href="#通过函数设置样式属性值" class="headerlink" title="通过函数设置样式属性值"></a>通过函数设置样式属性值</h3><p>使用css()方法设置属性值时，每个样式属性对应的value值还可以替换为函数形式。</p>
+<p>语法：<br>函数调用后，将返回值作为样式属性的值。<br>index表示匹配元素的索引值，从0开始；value表示匹配元素的样式属性的当前值；newValue表示函数的返回值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置单个属性</span></span><br><span class="line">$(selector).css(<span class="string">'property'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">index, value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> newValue;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置多个属性</span></span><br><span class="line">$(selector).css(&#123;</span><br><span class="line">    <span class="string">'property1'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index, value1</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> newValue;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'property2'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index, value2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> newValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"myBtn"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"设置样式"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).css(&#123;<span class="attr">background</span>: <span class="string">'pink'</span>, <span class="attr">width</span>: <span class="string">'150px'</span>, <span class="attr">height</span>: <span class="string">'50px'</span>, <span class="string">'border-radius'</span>: <span class="string">'50%'</span>&#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//通过函数设置样式</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'#myBtn'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'div'</span>).css(&#123;</span></span><br><span class="line"><span class="javascript">                width: <span class="function"><span class="keyword">function</span>(<span class="params">index, value</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">return</span> <span class="built_in">parseFloat</span>(value) * <span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">                &#125;,</span></span><br><span class="line"><span class="javascript">                height: <span class="function"><span class="keyword">function</span>(<span class="params">index, value</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span>(index === <span class="number">1</span>)&#123;</span></span><br><span class="line"><span class="javascript">                        <span class="keyword">return</span> <span class="built_in">parseFloat</span>(value) * <span class="number">2</span>;</span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log($(<span class="string">'#d2'</span>).css(<span class="string">'width'</span>));</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="jQuery操作元素类"><a href="#jQuery操作元素类" class="headerlink" title="jQuery操作元素类"></a>jQuery操作元素类</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addClass()</td>
+<td>将指定的类添加到匹配元素中</td>
+</tr>
+<tr>
+<td>removeClass()</td>
+<td>从所有匹配的元素中删除全部或指定的类</td>
+</tr>
+<tr>
+<td>toggleClass()</td>
+<td>对设置或移除被选元素的一个或多个类进行切换</td>
+</tr>
+<tr>
+<td>hasClass()</td>
+<td>判断元素的某个类是否存在</td>
+</tr>
+</tbody>
+</table>
+<p>在实际开发中，css()方法与addClass()、removeClass()方法虽然可以改变元素的样式，但使用场景不同。一般来说，为了分离CSS与Javascript代码，建议使用addClass()、removeClass()对类进行操作，通过增加和移动类来实现样式的切换。而css()方法适用CSS样式值不固定的情况，例如为元素随机生成背景色。</p>
+<p>toggleClass()方法：<br>$(selector).toggleClass(‘c’);  //参数c表示一个自定义的类，调用toggleClass()方法，指定元素中若没有c，则添加，否则执行移除操作。</p>
+<p>方式一：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).addClass(<span class="string">'c'</span>);  <span class="comment">//添加单个类</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).addClass(<span class="string">'c1 c2 c3'</span>);  <span class="comment">//添加多个类（用空格分开）</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).removeClass();  <span class="comment">//移除所有类</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).removeClass(<span class="string">'c'</span>);  <span class="comment">//移除单个类</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).removeClass(<span class="string">'c1 c2 c3'</span>);  <span class="comment">//移除多个类</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> d = $(<span class="string">'div'</span>);</span></span><br><span class="line"><span class="javascript">        d.toggleClass(<span class="string">'c'</span>);  <span class="comment">//第一次调用</span></span></span><br><span class="line"><span class="xml">        console.log(d[0].outerHTML);  //<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">        d.toggleClass(<span class="string">'c'</span>);  <span class="comment">//第二次调用</span></span></span><br><span class="line"><span class="xml">        console.log(d[0].outerHTML);  //<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="javascript">        d.toggleClass(<span class="string">'c'</span>);  <span class="comment">//第三次调用</span></span></span><br><span class="line"><span class="xml">        console.log(d[0].outerHTML);  //<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>方式二：<br>toggleClass()的第二个参数，可手动控制类的添加或移除。该参数是布尔值，true表示添加类，false表示移除类。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(selector).toggleClass('c', true);  //添加类c</span><br><span class="line">$(selector).toggleClass('c', false);  //删除类c</span><br></pre></td></tr></table></figure></p>
+<p>方式三：<br>toggleClass()第二个参数可通过条件判断的返回值设置。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>操作元素类<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/jquery-1.12.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        .b &#123;</span></span><br><span class="line"><span class="undefined">            background: green;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>12312313<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        d.toggleClass(<span class="string">'c'</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(d[<span class="number">0</span>].outerHTML);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> count=<span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  <span class="comment">//this表示发生事件的元素</span></span></span><br><span class="line"><span class="javascript">            $(<span class="keyword">this</span>).toggleClass(<span class="string">'b'</span>, ++count%<span class="number">3</span> === <span class="number">0</span>);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>拓展：操作元素类的addClass()、removeClass()、toggleClass()方法支持使用函数作为参数，通过参数的返回值来操作元素的类。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//addClass()方法</span><br><span class="line">$('div').addClass(function(index, value) &#123;</span><br><span class="line">    console.log('元素的索引：' + index);</span><br><span class="line">    console.log('元素原来的class值' + value);</span><br><span class="line">    return 'item-' + index;  //将返回值作为要添加的class</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>hasClass()方法：<br>$(selector).hasClass(‘c’);  //判断是否含有类名c<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">//判断是否含有类名c，有则移除，无则添加</span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Huang Zebin<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span>($(<span class="string">'div'</span>).hasClass(<span class="string">'c'</span>)) &#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">'div'</span>).removeClass(<span class="string">'c'</span>);</span></span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">                $(<span class="string">'div'</span>).addClass(<span class="string">'c'</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> result = $(<span class="string">'div'</span>);</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(result[<span class="number">0</span>].outerHTML);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="操作元素的尺寸"><a href="#操作元素的尺寸" class="headerlink" title="操作元素的尺寸"></a>操作元素的尺寸</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width()</td>
+<td>获取或设置元素的宽度 （没包括内边距？？）</td>
+</tr>
+<tr>
+<td>height()</td>
+<td>获取或设置元素的高度</td>
+</tr>
+<tr>
+<td>innerWidth()</td>
+<td>获取元素的宽度（包括内边距）</td>
+</tr>
+<tr>
+<td>innerHeight()</td>
+<td>获取元素的高度（包括内边距）</td>
+</tr>
+<tr>
+<td>outerWidth()</td>
+<td>获取元素的宽度（包括内边距和边框）</td>
+</tr>
+<tr>
+<td>outerHeight()</td>
+<td>获取元素的高度（包括内边距和边框）</td>
+</tr>
+<tr>
+<td>outerWidth(true)</td>
+<td>获取元素的宽度（包括内边距、边框、外边距）</td>
+</tr>
+<tr>
+<td>outerHeight(true)</td>
+<td>获取元素的高度（包括内边距、边框、外边距）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(selector).width();  //获取宽度</span><br><span class="line">$(selector).width('30px');  //设置宽度</span><br><span class="line">$(selector).width(30);  //设置宽度，不加引号不能添加单位</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/jquery-1.12.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        div &#123;</span></span><br><span class="line"><span class="undefined">            width: 200px;  /*元素的宽高（文字）*/</span></span><br><span class="line"><span class="undefined">            height: 200px;</span></span><br><span class="line"><span class="undefined">            background: yellow;</span></span><br><span class="line"><span class="undefined">            color: red;  /*字体颜色*/</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">            border-radius: 25%;</span></span><br><span class="line"><span class="undefined">            line-height: 25px;</span></span><br><span class="line"><span class="undefined">            padding: 10px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 获取和设置元素的宽度和高度 --&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>Huang Zebin<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'input'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'div'</span>).width($(<span class="string">'div'</span>).width() + <span class="number">50</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'div'</span>).height($(<span class="string">'div'</span>).height() + <span class="number">50</span>);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>备注：会查看Chrome的盒子模型</p>
+<h3 id="操作元素的位置"><a href="#操作元素的位置" class="headerlink" title="操作元素的位置"></a>操作元素的位置</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offset()</td>
+<td>获取匹配元素的（第一个元素）的坐标位置，或设置每个元素的坐标</td>
+</tr>
+<tr>
+<td>offsetParent()</td>
+<td>获取距离匹配元素最近的（含有定位信息）的元素</td>
+</tr>
+<tr>
+<td>position()</td>
+<td>获取匹配元素相对父元素的偏移</td>
+</tr>
+<tr>
+<td>scrollLeft()</td>
+<td>获取或设置匹配元素相对滚动条左侧的偏移</td>
+</tr>
+<tr>
+<td>scrollTop()</td>
+<td>获取或设置匹配元素相对滚动条顶部的偏移</td>
+</tr>
+</tbody>
+</table>
+<p>offset()方法：<br>可以获取到匹配元素中的第一个元素在当前页面的坐标位置。若元素的样式属性display设置为none，则获取到的值为0。<br>语法： $(selector).offset();<br>返回值包含两个属性left和top，分别表示元素距离浏览器的左偏移和上偏移。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>offset()<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//获取div的top和left值</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log($(<span class="string">'div'</span>).offset().top);</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log($(<span class="string">'div'</span>).offset().left);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//设置div的top和left值</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//$('div').offset(&#123;left: 200, top: 100&#125;);</span></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'div'</span>).offset(&#123;<span class="attr">left</span>: <span class="number">100</span>&#125;);  <span class="comment">//键值对&#123;&#125;  向右偏移</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>position()方法获取元素相对于父元素（含有定位）的偏移，当父元素没有设置定位时，后者的左右与前者等价.【例子？？】</p>
+<p>offsetParent()方法返回距离指定元素最近的“被定位”的祖辈元素对象。“被定位”是指元素的样式属性中position属性的值为relative、absolute、fixed，不包括position属性的默认值static。<br>语法： $(selector).offsetParent();<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/jquery-1.12.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        div &#123;</span></span><br><span class="line"><span class="undefined">            border: 1px solid red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        #d1 &#123;</span></span><br><span class="line"><span class="undefined">            width: 100px;</span></span><br><span class="line"><span class="undefined">            height: 100px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        #d2 &#123;</span></span><br><span class="line"><span class="undefined">            width: 200px;</span></span><br><span class="line"><span class="undefined">            height: 200px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        #d3 &#123;</span></span><br><span class="line"><span class="undefined">            width: 300px;</span></span><br><span class="line"><span class="undefined">            height: 300px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        #d4 &#123;</span></span><br><span class="line"><span class="undefined">            width: 400px;</span></span><br><span class="line"><span class="undefined">            height: 400px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d1"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d2"</span> <span class="attr">style</span>=<span class="string">"position: relative"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d3"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"d4"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'#d4'</span>).offsetParent().css(<span class="string">'backgroundColor'</span>, <span class="string">'green'</span>);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>scrollLeft()与scrollTop()方法可以获取或设置指定元素相对滚动条左侧和顶部的偏移值。<br>//获取元素相对左侧的偏移值<br>$(selector).scrollLeft();<br>//设置元素相对左侧的偏移值<br>$(selector).scrollLeft(value);<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/jquery-1.12.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        div &#123;</span></span><br><span class="line"><span class="undefined">            background: pink;</span></span><br><span class="line"><span class="undefined">            height: 100px;</span></span><br><span class="line"><span class="undefined">            width: 200px;</span></span><br><span class="line"><span class="undefined">            border: 1px solid black;</span></span><br><span class="line"><span class="undefined">            overflow: auto;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        p &#123;</span></span><br><span class="line"><span class="undefined">            background: yellow;</span></span><br><span class="line"><span class="undefined">            height: 1000px;</span></span><br><span class="line"><span class="undefined">            width: 1000px;</span></span><br><span class="line"><span class="undefined">            margin: 10px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"按钮"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>行动好过语言<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        $(<span class="string">'input'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'div'</span>).scrollTop(<span class="string">'500'</span>);</span></span><br><span class="line"><span class="javascript">            $(<span class="string">'div'</span>).scrollLeft(<span class="string">'50'</span>);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-09-26T15:16:22.494Z" itemprop="dateUpdated">2019-09-26 23:16:22</time>
+</span><br>
+
+
+        
+        <a href="/2019/09/23/jQuery学习笔记（三）/" target="_blank" rel="external">http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://blog.hzebin.cn">
+            <img src="/img/avatar.jpg" alt="Huang Zebin">
+            Huang Zebin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&title=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&title=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&via=http://blog.hzebin.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/11/30/Python网络爬虫（一）/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python网络爬虫（一）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/09/22/jQuery学习笔记（二）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">jQuery学习笔记（二）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "VqT1v8EC0zmGvHnF4Niwwnc6-gzGzoHsz",
+            appKey: "Qe3DgH3JtQjBIXPQGEzWN3p3",
+            avatar: "mm",
+            placeholder: "留言区--上面的三项选填，可直接评论(Can comment anonymously)",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Huang Zebin &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&title=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&title=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《jQuery学习笔记（三）》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/&via=http://blog.hzebin.cn" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/09/23/jQuery学习笔记（三）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aW27DIBAF0Ox/0+4CIrt3BhwJOHxVTQQ+rjSdB59PvK6v9f1p8s3v79+d8nljYWBgLMu4HtfdAflhIzsnz4aBgXEO4zksJoDnQJwH8d5ZGBgYGM9bX8GqJogYGBgY49slhWjvOxgYGBgjRexIayzZ4fk302pxDAyMBRnVh/jlz6/MNzAwMJZiXMU1XtwmY8vyU2FgYGzNyANcclieMvbacP/sgIGBsTVjJIxW2UnSmbyU29MxMDC2ZiSY8cA6t7ht/k0wMDCWYrxxdTUPssnwMmq9YWBgHMDobZGPOccHpYXbIhgYGNsxqkEwaff3XkcVj4GBcRqjd7WrmlDmJz6/oNsAjYGBcQyjcLlhOEHsBfFoEouBgXEAIy9xc3ByRaMalMszWAwMjGUZSQCtDiN7wfrFphsGBsbijLwnV32gvGVWHZ3epoYYGBibMvJQmxSf+SWJ5oP2NsXAwNia0RsPVIcNSdIZ/XvAwMA4jFG9MJE34JIkstqew8DA2JtR7snFly2aQbNYHmNgYJzDGB9S5oxZiSYGBsbJjPxyQ57k9QrmwjULDAyMTRlXcfWGCvnljAn1NwYGxnaMkclgngJWB5M9PAYGxt6MkVZ+MxuNRxGFwhgDA+MARi/w5S2zuUXsbcDFwMDAaLXhpoXUXnTHwMA4npG3z/JQnlz+mBxwMTAwFmEkRWw1CFYvavQSRAwMjBMYvbzrlyPP8dIXAwNjWcYfxj6dO1UlA0gAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
