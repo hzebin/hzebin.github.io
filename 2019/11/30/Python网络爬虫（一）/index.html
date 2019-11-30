@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -25,7 +25,7 @@
 <meta name="keywords" content="爬虫">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python网络爬虫（一）">
-<meta property="og:url" content="http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/index.html">
+<meta property="og:url" content="http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/index.html">
 <meta property="og:site_name" content="Hzebin 黄泽彬的博客">
 <meta property="og:description" content="Python网络爬虫requests库 自动爬取HTML页面，自动网络请求提交 123456789requests库的安装小测：#导入requests库import requests#构造一个请求r = requests.get(&quot;https://baidu.com&quot;)print(&quot;r的类型为：\n&quot;, type(r))print(&quot;状态码为：\n&quot;, r.status_code)print(&quot;h">
 <meta property="og:locale" content="default">
@@ -61,7 +61,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -81,77 +81,77 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/" target="_blank">
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/" target="_blank">
+              <a href="http://www.weibo.com/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank">
+              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank" >
                 <i class="icon icon-lg icon-code"></i>
                 CSDN算法刷题本
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/liuyan">
+              <a href="/liuyan"  >
                 <i class="icon icon-lg icon-clipboard"></i>
                 留言板
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/links">
+              <a href="/links"  >
                 <i class="icon icon-lg icon-link"></i>
                 友情链接
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/footprint">
+              <a href="/footprint"  >
                 <i class="icon icon-lg icon-fly"></i>
                 成长足迹
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/test">
+              <a href="/test"  >
                 <i class="icon icon-lg icon-tachometer-alt-slowest"></i>
                 test area
               </a>
@@ -218,18 +218,19 @@
     </aside>
 
 
-<article id="post-Python网络爬虫（一）" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Python网络爬虫（一）"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Python网络爬虫（一）</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-11-30 18:00:00" datetime="2019-11-30T10:00:00.000Z" itemprop="datePublished">2019-11-30</time>
+            <time class="post-time" title="2019-11-30 18:00:00" datetime="2019-11-30T10:00:00.000Z"  itemprop="datePublished">2019-11-30</time>
 
             
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -239,6 +240,7 @@
             <h1 id="Python网络爬虫"><a href="#Python网络爬虫" class="headerlink" title="Python网络爬虫"></a>Python网络爬虫</h1><p>requests库</p>
 <p>自动爬取HTML页面，自动网络请求提交</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">requests库的安装小测：</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入requests库</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment">#构造一个请求</span></span><br><span class="line">r = requests.get(<span class="string">"https://baidu.com"</span>)</span><br><span class="line">print(<span class="string">"r的类型为：\n"</span>, type(r))</span><br><span class="line">print(<span class="string">"状态码为：\n"</span>, r.status_code)</span><br><span class="line">print(<span class="string">"html内容为：\n"</span>, r.text)</span><br></pre></td></tr></table></figure>
+
 <p>requests库的7个主要方法</p>
 <table>
 <thead>
@@ -247,8 +249,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>requests.request()</td>
 <td>构造一个请求，支撑以下各方法的基础方法</td>
 </tr>
@@ -276,9 +277,9 @@
 <td>requests.delete()</td>
 <td>向HTML页面提交删除请求，对应于HTTP的DELETE</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">requests.get()</span><br><span class="line"></span><br><span class="line">r = requests.get(url)</span><br><span class="line">构造一个向服务器请求资源的Request对象</span><br><span class="line">返回一个包含服务器资源的Response对象，Response对象包含爬虫返回的内容</span><br><span class="line"></span><br><span class="line">requests.get(url, params=<span class="keyword">None</span>, **kwargs)</span><br><span class="line">url 拟获取页面的URL链接</span><br><span class="line">params url中的额外参数，字典或字节流格式，可选</span><br><span class="line">**kwargs <span class="number">12</span>个控制访问的参数</span><br></pre></td></tr></table></figure>
+
 <p>Response对象的属性</p>
 <table>
 <thead>
@@ -287,8 +288,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>r.status_code</td>
 <td>HTTP请求的返回状态，200表示连接成功，404或其他表示失败</td>
 </tr>
@@ -308,9 +308,9 @@
 <td>r.content</td>
 <td>HTTP响应内容的二进制形式（例如图像）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入requests库</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="comment">#构造一个请求</span></span><br><span class="line">r = requests.get(<span class="string">"https://baidu.com"</span>)</span><br><span class="line">print(<span class="string">"r的类型为：\n"</span>, type(r))</span><br><span class="line"><span class="comment">#查看是否请求成功</span></span><br><span class="line">print(<span class="string">"状态码为：\n"</span>, r.status_code)</span><br><span class="line">print(<span class="string">"html内容为：\n"</span>, r.text)</span><br><span class="line">print(<span class="string">"网页的编码方式为：\n"</span>, r.encoding)</span><br><span class="line">print(<span class="string">"网页的备选编码方式为：\n"</span>, r.apparent_encoding)</span><br><span class="line"><span class="comment">#设置网页的编码方式</span></span><br><span class="line">r.encoding = <span class="string">'utf-8'</span></span><br><span class="line">print(<span class="string">"html内容为：\n"</span>, r.text)</span><br></pre></td></tr></table></figure>
+
 <p>requests.get()网络连接可能有风险会抛出异常</p>
 <table>
 <thead>
@@ -319,8 +319,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>requests.ConnectionError</td>
 <td>网络连接错误异常，如DNS查询失败，拒绝连接等</td>
 </tr>
@@ -348,12 +347,13 @@
 <td>r.raise_for_status()</td>
 <td>如果不是200，产生异常requests.HTTPErrot。<strong>在方法内部判断r.status_code是否等于200，不需要增加额外的if语句，该语句便于利用try-except进行异常处理。</strong></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">爬取网页的通用代码框架</span><br><span class="line"></span><br><span class="line"><span class="comment">#爬取网页的通用代码框架</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, timeout = <span class="number">30</span>)</span><br><span class="line">        r.raise_for_status()  <span class="comment">#如果状态不是200，英法HTTPError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"产生异常"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    url = <span class="string">"https://www.baidu.com"</span></span><br><span class="line">    print(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+
 <p>HTTP 超文本传输协议</p>
 <p>HTTP是一个基于“请求与响应”模式的、无状态【第一次请求与第二次请求没有关联】的应用层协议【HTTP协议工作在TCP协议之上】。采用URL作为定位网络资源的标识，URL格式如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://host[:port][path]</span><br></pre></td></tr></table></figure>
+
 <p>PATCH与PUT的区别</p>
 <p>假设URL位置有一组数据UserInfo，包括UserId、UserName等20个字段</p>
 <p>需求：用户修改了UserName，其他不变</p>
@@ -363,9 +363,13 @@
 </ul>
 <p><strong>PATCH优点：节省网络宽带</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#requests库的head()方法</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.head(<span class="string">"https://baidu.com"</span>)</span><br><span class="line">print(<span class="string">"请求的头部内容为：\n"</span>, r.headers)</span><br><span class="line">print(<span class="string">"请求的html内容为：\n"</span>, r.text)  <span class="comment">#输出为空</span></span><br><span class="line"><span class="comment">#所用head可以更加节约网络资源地去获取网络概要信息</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#requests库的post()方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;  <span class="comment">#字典 键值对</span></span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = payload)</span><br><span class="line">print(r.text)</span><br><span class="line"><span class="comment">## 向URL POST一个字典，自动编码为from表单  跟put()方法一样，不过会将原有地数据覆盖掉</span></span><br><span class="line"><span class="comment"># &#123;  ... </span></span><br><span class="line"><span class="comment">#     "form": &#123; </span></span><br><span class="line"><span class="comment">#         "key2": "value2", </span></span><br><span class="line"><span class="comment">#         "key1": "value1" </span></span><br><span class="line"><span class="comment">#     &#125;, </span></span><br><span class="line"><span class="comment">#    ...</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#requests库地post()方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">r = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = <span class="string">'ABC'</span>)  <span class="comment">#字符串</span></span><br><span class="line">print(r.text)</span><br><span class="line"><span class="comment">## 向URL POST一个字符串，自动编码为data</span></span><br><span class="line"><span class="comment"># &#123;</span></span><br><span class="line"><span class="comment">#   ...</span></span><br><span class="line"><span class="comment">#   "data": "ABC",</span></span><br><span class="line"><span class="comment">#   "form": &#123;&#125;,</span></span><br><span class="line"><span class="comment">#     ...</span></span><br><span class="line"><span class="comment"># &#125;</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">requests.requests(method, url, **kwargs)</span><br><span class="line">method 请求方式，对应有GET/HEAD/POST/PUT/PATCH/DELETE/OPTIONS（获取服务器跟客户端能够打交道的参数）一共<span class="number">7</span>种</span><br><span class="line">url 拟获取页面的url链接</span><br><span class="line">**kwargs 访问控制的参数，共<span class="number">13</span>个，可选项</span><br><span class="line">	params 字典或字节序列，作为参数增加到url中</span><br><span class="line">    	&gt;&gt;&gt; kv=&#123;<span class="string">'key1'</span>:<span class="string">'value1'</span>,<span class="string">'key2'</span>:<span class="string">'value2'</span>&#125; </span><br><span class="line">		&gt;&gt;&gt; r=requests.request(<span class="string">'GET'</span>,<span class="string">'http://python123.io/ws'</span>,params=kv)</span><br><span class="line"> 		&gt;&gt;&gt; print(r.url) http://python123.io/ws?key1=value1&amp;key2=value2</span><br><span class="line">    data 字典、字节序列或文件对象，作为Requests的内容</span><br><span class="line">    	&gt;&gt;&gt; kv=&#123;<span class="string">'key1'</span>:<span class="string">'value1'</span>,<span class="string">'key2'</span>:<span class="string">'value2'</span>&#125; </span><br><span class="line">		&gt;&gt;&gt; r=requests.request(<span class="string">'POST'</span>,<span class="string">'http://python123.io/ws'</span>,data=kv)</span><br><span class="line"> 		&gt;&gt;&gt; body=<span class="string">'主体内容'</span> </span><br><span class="line">		&gt;&gt;&gt; r=requests.request(<span class="string">'POST'</span>,<span class="string">'http://python123.io/ws'</span>,data=body)</span><br><span class="line">    json JSON格式的数据，作为Requests的内容</span><br><span class="line">    	&gt;&gt;&gt; kv=&#123;<span class="string">'key1'</span>:<span class="string">'value1'</span>&#125; </span><br><span class="line">		&gt;&gt;&gt; r=requests.request(<span class="string">'POST'</span>,<span class="string">'http://python123.io/ws'</span>,json=kv)</span><br><span class="line">    headers 字典，HTTP定制头</span><br><span class="line">    	&gt;&gt;&gt; hd=&#123;<span class="string">'user‐agent'</span>:<span class="string">'Chrome/10'</span>&#125; </span><br><span class="line">		&gt;&gt;&gt; r=requests.request(<span class="string">'POST'</span>,<span class="string">'http://python123.io/ws'</span>,headers=hd)</span><br><span class="line">    cookies 字典或CookieJar,Requests中的cookie</span><br><span class="line">    auth 元组，支持HTTP认证功能</span><br><span class="line">    files 字典类型，传输文件</span><br><span class="line">    	&gt;&gt;&gt; fs=&#123;<span class="string">'file'</span>:open(<span class="string">'data.xls'</span>,<span class="string">'rb'</span>)&#125; </span><br><span class="line">        &gt;&gt;&gt; r=requests.request(<span class="string">'POST'</span>,<span class="string">'http://python123.io/ws'</span>,files=fs)	</span><br><span class="line">    timeout 设定超时时间，秒为单位</span><br><span class="line">    	&gt;&gt;&gt; r=requests.request(<span class="string">'GET'</span>,<span class="string">'http://www.baidu.com'</span>,timeout=<span class="number">10</span>)</span><br><span class="line">    proxies 字典类型，设定访问代理服务器，可以增加登录认证(可以隐藏源，防止逆追踪)</span><br><span class="line">    	&gt;&gt;&gt; pxs=&#123;<span class="string">'http'</span>:<span class="string">'http://user:pass@10.10.10.1:1234'</span> <span class="string">'https'</span>:<span class="string">'https://10.10.10.1:4321'</span>&#125; 						&gt;&gt;&gt; r=requests.request(<span class="string">'GET'</span>,<span class="string">'http://www.baidu.com'</span>,proxies=pxs)</span><br><span class="line">    allow_redirects <span class="keyword">True</span>/<span class="keyword">False</span>，默认为<span class="keyword">True</span>，重定向开关</span><br><span class="line">    stream <span class="keyword">True</span>/<span class="keyword">False</span>，默认为<span class="keyword">True</span>，获取内容立即下载开关</span><br><span class="line">    verify <span class="keyword">True</span>/<span class="keyword">False</span>，默认为<span class="keyword">True</span>，认证SSL证书开关</span><br><span class="line">    cert 本地SSL证书路径</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -379,12 +383,12 @@
 
 
         
-        <a href="/2019/11/30/Python网络爬虫（一）/" target="_blank" rel="external">http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/</a>
+        <a href="/2019/11/30/Python网络爬虫（一）/" target="_blank" rel="external">http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/</a>
         
     </div>
     
     <footer>
-        <a href="http://blog.hzebin.cn">
+        <a href="http://github.com/hzebin">
             <img src="/img/avatar.jpg" alt="Huang Zebin">
             Huang Zebin
         </a>
@@ -410,7 +414,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -420,22 +424,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&via=http://blog.hzebin.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&via=http://github.com/hzebin" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -528,7 +532,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -547,10 +552,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -582,7 +587,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -592,22 +597,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&title=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/&via=http://blog.hzebin.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python网络爬虫（一）》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/&via=http://github.com/hzebin" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/11/30/Python网络爬虫（一）/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2019/11/30/Python网络爬虫（一）/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -618,7 +623,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3aQZLCMAwFUe5/6cwBGEx/yVBEbq9SqeD4ZSEky48HHhcYr55cz0bubxsyZMi4LSNdHF/uev7nZ15dkxlkyJBxAuPV6ztTp7z1e9/MLEOGDBn4en1n/d41SYYMGTI6jE4R+0MBV4YMGT/P6E9NdsNIeP14LS5DhowbMtJFfPP6I/0NGTJk3IpxhWMNW4fUWimLViVDhozRDB7gaoctyGyoQCUzyJAhYzQjDX8kmNa2+PutBRkyZMxj8C22OOQ1CmDyWxkyZJzDqJWRuxbXCdPF/woZMmTclpFukKXLIilmWr7KkCHjNAZPv9IGAN96S/EyZMg4jZH+gGPSxC4tqtEZNxkyZNyc0UnXOt+MF7foSRkyZIxm1F7cWShfbrpVJ0OGjNmMtIlYK2tJG2DDZ5IhQ8ZQRq1xWCt6+fEykrD+kxrKkCFjKINsx6fTpR/iI3muDBkyBjHS0NnZJqs1AFCglyFDxmEMHnxJcVs7/LqeB/VgZciQMZRBQm2aGu5qWL65L0OGjAMY6XEKEoJrrQV+pEyGDBlnMniixlPDftEb92BlyJAxiHGFY1fa12lqBrt3MmTIGMHggzcP0oNltT+A2kpkyJBxX0Y/yKbbZDzRDAKuDBkyDmB0itu43YjnjA9byJAhQ8bWlmetPN4ccGXIkDGU8c0GZ9B4kCFDxgEMvlnPG5xpsljb/pMhQ8YJjF15F0/p9n4mGTJkjGb8ASjV5PMWr+gVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwklEQVR42u3aQW7jMAwF0Nz/0hlgVrOo4k9SbKfA8ypIHFtPC5Eg+XrF1/vv9fmb06/vf67TnacrecKFCw8PD6+19OoLPt9f3azTeqpv/+LJeHh4eGu8/HDPv58sPflXtHF4eHh4P8pLXt/bgiS04OHh4f1eXv7fagBYWQ8eHh7eGi853HsBI0nQe8Hpcq0FDw8PL+ZVC6//w+fF/h4eHh7eoKteDRK9I/v0a7Xp9cW78PDw8BZ4kyZWssS8edZ7cnQnHh4e3lVeNQzMRw0SWL5ND2vGw8PDW+DlLfxe6twbFOhRH8IDHh4e3iVezkgKqfmiJ08ohBk8PDy8BV5+4FaX1QswvSS+0BjDw8PDu8SbFA5upcjz4NEMBnh4eHgtXrXFlR/iSbtr0vRqXnh4eHhXMXNAvvTkyUlpeFSlxsPDw+ufxuUiRTKQ2jv6k0HVfIgBDw8P7y5v0vKvtsomwwfVMgceHh7eNi9Jpnupc17G7SXZDxuEh4eHt8abHMp5+tvbjtGG4uHh4a3xPh+71WS62jbrDStE/8XDw8P7Rt6kBZUPS/XKvkkAw8PDw9vjVYsFvdGo5PnNvlxv6AoPDw9vDdZrj+VjB5MxrGiD8PDw8BZ4yQvyI7vX3OoNLozmxfDw8PAu8XqN/8l4Vs6oliGO0Q8PDw9vzJu3mvIKQLUkkYSrh/vx8PDwlnn5GEF1I6oJd1K8iD7j4eHhLfB6BYv8aK4OIkyKDs1SBR4eHl5xhe/iNUmyR8lxsex7jHt4eHh4Y968i9RbetIY6xWUR3EPDw8PL+ZVE+J8I8oDUsUiRXMyAg8PD+8Sr7rQpPA6KUnkBdmH5B4PDw/vR3m3xrOqRY3RQAMeHh7eL+flqXCvXHtsg+Hh4eEt8KqpcLWUUF10b7z1mFLj4eHhXeVNGmB5gbWaFlcHvF6TCw8PDy/l/QFB8aZLUt6WxwAAAABJRU5ErkJggg==" alt="微信分享二维码">
 </div>
 
 

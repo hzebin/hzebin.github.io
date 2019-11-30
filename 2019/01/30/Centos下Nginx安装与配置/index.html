@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
     
 
     
@@ -25,7 +25,7 @@
 <meta name="keywords" content="服务器,Centos,Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos下Nginx安装与配置">
-<meta property="og:url" content="http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/index.html">
+<meta property="og:url" content="http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/index.html">
 <meta property="og:site_name" content="Hzebin 黄泽彬的博客">
 <meta property="og:description" content="Nginx有什么用？我们知道一个服务器只有一个80端口，如果我们有一个服务器，并且我们有多个web应用都需要使用到服务器的80端口，我们该怎么办呢？当第一个web应用使用了80端口后，其他应用就使用不了80端口，因为服务器的80端口已经被第一个web应用给占用了，为了解决多个应用在同一个服务器共同使用80端口，我们可以利用Nginx。 在Centos服务器下安装Nginx安装Nginx前的环境准备">
 <meta property="og:locale" content="default">
@@ -64,7 +64,7 @@
 <body>
     <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide">
+    <aside id="menu" class="hide" >
   <div class="inner flex-row-vertical">
     <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
         <i class="icon icon-lg icon-close"></i>
@@ -84,77 +84,77 @@
       <ul class="nav">
         
             <li class="waves-block waves-effect">
-              <a href="/">
+              <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
                 主页
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/archives">
+              <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
                 Archives
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tags">
+              <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/categories">
+              <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 Categories
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://github.com/" target="_blank">
+              <a href="https://github.com/" target="_blank" >
                 <i class="icon icon-lg icon-github"></i>
                 Github
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="http://www.weibo.com/" target="_blank">
+              <a href="http://www.weibo.com/" target="_blank" >
                 <i class="icon icon-lg icon-weibo"></i>
                 Weibo
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank">
+              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank" >
                 <i class="icon icon-lg icon-code"></i>
                 CSDN算法刷题本
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/liuyan">
+              <a href="/liuyan"  >
                 <i class="icon icon-lg icon-clipboard"></i>
                 留言板
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/links">
+              <a href="/links"  >
                 <i class="icon icon-lg icon-link"></i>
                 友情链接
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/footprint">
+              <a href="/footprint"  >
                 <i class="icon icon-lg icon-fly"></i>
                 成长足迹
               </a>
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/test">
+              <a href="/test"  >
                 <i class="icon icon-lg icon-tachometer-alt-slowest"></i>
                 test area
               </a>
@@ -216,23 +216,24 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nginx有什么用？"><span class="post-toc-number">1.</span> <span class="post-toc-text">Nginx有什么用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Centos服务器下安装Nginx"><span class="post-toc-number">2.</span> <span class="post-toc-text">在Centos服务器下安装Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Nginx前的环境准备"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装Nginx前的环境准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开始安装Nginx"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">开始安装Nginx</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动"><span class="post-toc-number">3.</span> <span class="post-toc-text">启动</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx-conf的配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">nginx.conf的配置</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nginx有什么用？"><span class="post-toc-number">1.</span> <span class="post-toc-text">Nginx有什么用？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Centos服务器下安装Nginx"><span class="post-toc-number">2.</span> <span class="post-toc-text">在Centos服务器下安装Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Nginx前的环境准备"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装Nginx前的环境准备</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开始安装Nginx"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">开始安装Nginx</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx-conf的配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">nginx.conf的配置</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Centos下Nginx安装与配置" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-Centos下Nginx安装与配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Centos下Nginx安装与配置</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-01-30 18:19:06" datetime="2019-01-30T10:19:06.000Z" itemprop="datePublished">2019-01-30</time>
+            <time class="post-time" title="2019-01-30 18:19:06" datetime="2019-01-30T10:19:06.000Z"  itemprop="datePublished">2019-01-30</time>
 
             
 
 
             
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
     <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
 </span>
 
@@ -242,39 +243,72 @@
             <h2 id="Nginx有什么用？"><a href="#Nginx有什么用？" class="headerlink" title="Nginx有什么用？"></a>Nginx有什么用？</h2><p>我们知道一个服务器只有一个80端口，如果我们有一个服务器，并且我们有多个web应用都需要使用到服务器的80端口，我们该怎么办呢？当第一个web应用使用了80端口后，其他应用就使用不了80端口，因为服务器的80端口已经被第一个web应用给占用了，为了解决多个应用在同一个服务器共同使用80端口，我们可以利用Nginx。</p>
 <h2 id="在Centos服务器下安装Nginx"><a href="#在Centos服务器下安装Nginx" class="headerlink" title="在Centos服务器下安装Nginx"></a>在Centos服务器下安装Nginx</h2><h3 id="安装Nginx前的环境准备"><a href="#安装Nginx前的环境准备" class="headerlink" title="安装Nginx前的环境准备"></a>安装Nginx前的环境准备</h3><p>首先由于nginx的一些模块依赖一些lib库，所以在安装nginx之前，必须先安装这些lib库，这些依赖库主要有g++、gcc、openssl-devel、pcre-devel和zlib-devel 所以执行如下命令安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$   yum install gcc-c++  </span><br><span class="line">$   yum install pcre pcre-devel  </span><br><span class="line">$   yum install zlib zlib-devel  </span><br><span class="line">$   yum install openssl openssl--devel</span><br></pre></td></tr></table></figure>
-<h3 id="开始安装Nginx"><a href="#开始安装Nginx" class="headerlink" title="开始安装Nginx"></a>开始安装Nginx</h3><p>安装之前，最好检查一下是否已经安装有nginx<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   find -name nginx</span><br></pre></td></tr></table></figure></p>
-<p>如果系统已经安装了nginx，那么就先卸载<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   yum remove nginx</span><br></pre></td></tr></table></figure></p>
-<p>首先进入/usr/local目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   <span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
-<p>从官网下载最新版的nginx,可以进入官网寻找最新版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   wget http://nginx.org/download/nginx-1.15.8.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>解压nginx压缩包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   tar -zxvf nginx-1.15.8.tar.gz</span><br></pre></td></tr></table></figure></p>
-<p>会产生一个nginx-1.15.8 目录，这时进入nginx-1.15.8目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   <span class="built_in">cd</span>  nginx-1.15.8</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="开始安装Nginx"><a href="#开始安装Nginx" class="headerlink" title="开始安装Nginx"></a>开始安装Nginx</h3><p>安装之前，最好检查一下是否已经安装有nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   find -name nginx</span><br></pre></td></tr></table></figure>
+
+<p>如果系统已经安装了nginx，那么就先卸载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   yum remove nginx</span><br></pre></td></tr></table></figure>
+
+<p>首先进入/usr/local目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   <span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
+
+<p>从官网下载最新版的nginx,可以进入官网寻找最新版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   wget http://nginx.org/download/nginx-1.15.8.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压nginx压缩包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   tar -zxvf nginx-1.15.8.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>会产生一个nginx-1.15.8 目录，这时进入nginx-1.15.8目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   <span class="built_in">cd</span>  nginx-1.15.8</span><br></pre></td></tr></table></figure>
+
 <p>接下来安装，使用–prefix参数指定nginx安装的目录,make、make install安装，命令如下：【如何系统提示./configure: error: the HTTP gzip module requires the zlib library. 则再安装库，命令为yum install -y zlib-devel】</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ./configure --prefix=/usr/<span class="built_in">local</span>/nginx  <span class="comment">#这一步需要按需要添加编译参数</span></span><br><span class="line">$ sudo make</span><br><span class="line">$ sudo make install</span><br></pre></td></tr></table></figure>
-<p>如果没有报错，顺利完成后，最好看一下nginx的安装目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   whereis nginx</span><br></pre></td></tr></table></figure></p>
-<p>安装完毕后，进入安装后目录（/usr/local/nginx）便可以启动或停止它了。</p>
-<font color="red"><strong>到此，使用CentOS安装nginx已经完成了!<strong></strong></strong></font>
 
-<p><br></p>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>先测试一下配置文件是否正确：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br></pre></td></tr></table></figure></p>
-<p>无问题可以启动：<br>【如果使用netstat -ltunp命令，可以看到0.0.0.0:80端口被httpd这个进程占用了，<br><figure class="image-bubble">
+<p>如果没有报错，顺利完成后，最好看一下nginx的安装目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$   whereis nginx</span><br></pre></td></tr></table></figure>
+
+<p>安装完毕后，进入安装后目录（/usr/local/nginx）便可以启动或停止它了。<br><font color="red"><strong>到此，使用CentOS安装nginx已经完成了!<strong></strong></strong></font></p>
+<br>
+## 启动
+先测试一下配置文件是否正确：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>无问题可以启动：<br>【如果使用netstat -ltunp命令，可以看到0.0.0.0:80端口被httpd这个进程占用了，</p>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://i.loli.net/2019/01/30/5c518250a3585.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/01/30/5c518250a3585.png" alt title>
                 </div>
                 <div class="image-caption"></div>
-            </figure><br>如何解决服务器的80端口被httpd占用，可以先让它httpd结束，命令为service httpd stop  ； 启用httpd的命令为service httpd start】<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br></pre></td></tr></table></figure></p>
-<p>检查是否启动成功：<br>打开浏览器访问此机器的 IP，如果浏览器出现 Welcome to nginx! 则表示 Nginx 已经安装并运行成功。<br>部分命令如下：<br>重启：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –s reload</span><br></pre></td></tr></table></figure></p>
-<p>停止：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –s stop</span><br></pre></td></tr></table></figure></p>
-<p>测试配置文件是否正常：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –t</span><br></pre></td></tr></table></figure></p>
-<p>强制关闭：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pkill nginx</span><br></pre></td></tr></table></figure></p>
-<h2 id="nginx-conf的配置"><a href="#nginx-conf的配置" class="headerlink" title="nginx.conf的配置"></a>nginx.conf的配置</h2><p>我们可以在/usr/local/nginx/conf目录下找到nginx.conf文件，如下图<br><figure class="image-bubble">
+            </figure>
+<p>如何解决服务器的80端口被httpd占用，可以先让它httpd结束，命令为service httpd stop  ； 启用httpd的命令为service httpd start】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+
+<p>检查是否启动成功：<br>打开浏览器访问此机器的 IP，如果浏览器出现 Welcome to nginx! 则表示 Nginx 已经安装并运行成功。<br>部分命令如下：<br>重启：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –s reload</span><br></pre></td></tr></table></figure>
+
+<p>停止：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –s stop</span><br></pre></td></tr></table></figure>
+
+<p>测试配置文件是否正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ /usr/<span class="built_in">local</span>/nginx/sbin/nginx –t</span><br></pre></td></tr></table></figure>
+
+<p>强制关闭：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pkill nginx</span><br></pre></td></tr></table></figure>
+
+<h2 id="nginx-conf的配置"><a href="#nginx-conf的配置" class="headerlink" title="nginx.conf的配置"></a>nginx.conf的配置</h2><p>我们可以在/usr/local/nginx/conf目录下找到nginx.conf文件，如下图</p>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://i.loli.net/2019/01/30/5c5183d0168cd.png" alt="" title="">
+                    <img src="https://i.loli.net/2019/01/30/5c5183d0168cd.png" alt title>
                 </div>
                 <div class="image-caption"></div>
-            </figure></p>
-<p>假设你的官网主页使用了80端口，它的url为<a href="http://xxx.cn" target="_blank" rel="noopener">http://xxx.cn</a> ，另一个abc应用的url为<a href="http://abc.xxx.cn" target="_blank" rel="noopener">http://abc.xxx.cn</a> ,先在服务器建好文件夹准备存放不同的应用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;  <span class="comment">#使用80端口监听</span></span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www/html/;  <span class="comment">#放官网的文件目录</span></span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;  <span class="comment">#使用80端口监听</span></span><br><span class="line">        server_name  abc.xxx.cn;  <span class="comment">#abc web应用的url</span></span><br><span class="line">        </span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www/web_abc/;  <span class="comment">#存放abc web应用的文件夹</span></span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">            proxy_pass http://120.55.123.123:1234;  </span><br><span class="line">            <span class="comment">#假设服务器的ip地址为120.55.123.123，想用1234端口来转</span></span><br><span class="line">            <span class="comment">#发,1234端口先设置服务器规则为允许</span></span><br><span class="line">        &#125;</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+            </figure>
+
+<p>假设你的官网主页使用了80端口，它的url为<a href="http://xxx.cn" target="_blank" rel="noopener">http://xxx.cn</a> ，另一个abc应用的url为<a href="http://abc.xxx.cn" target="_blank" rel="noopener">http://abc.xxx.cn</a> ,先在服务器建好文件夹准备存放不同的应用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;  <span class="comment">#使用80端口监听</span></span><br><span class="line">        server_name  localhost;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www/html/;  <span class="comment">#放官网的文件目录</span></span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;  <span class="comment">#使用80端口监听</span></span><br><span class="line">        server_name  abc.xxx.cn;  <span class="comment">#abc web应用的url</span></span><br><span class="line">        </span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www/web_abc/;  <span class="comment">#存放abc web应用的文件夹</span></span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">            proxy_pass http://120.55.123.123:1234;  </span><br><span class="line">            <span class="comment">#假设服务器的ip地址为120.55.123.123，想用1234端口来转</span></span><br><span class="line">            <span class="comment">#发,1234端口先设置服务器规则为允许</span></span><br><span class="line">        &#125;</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>现在在浏览器输入<a href="http://xxx.cn" target="_blank" rel="noopener">http://xxx.cn</a> 就可以访问官网了，在浏览器输入<a href="http://abc.xxx.cn" target="_blank" rel="noopener">http://abc.xxx.cn</a> （子域名）就可以访问abc web应用了</p>
 
         </div>
@@ -289,12 +323,12 @@
 
 
         
-        <a href="/2019/01/30/Centos下Nginx安装与配置/" target="_blank" rel="external">http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/</a>
+        <a href="/2019/01/30/Centos下Nginx安装与配置/" target="_blank" rel="external">http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/</a>
         
     </div>
     
     <footer>
-        <a href="http://blog.hzebin.cn">
+        <a href="http://github.com/hzebin">
             <img src="/img/avatar.jpg" alt="Huang Zebin">
             Huang Zebin
         </a>
@@ -320,7 +354,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -330,22 +364,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&via=http://blog.hzebin.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&via=http://github.com/hzebin" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,7 +479,8 @@
         </div>
         
         <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check" data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
             <div class="reward-toggle-ctrol">
                 <span class="reward-toggle-item wechat">微信</span>
                 <span class="reward-toggle-label"></span>
@@ -464,10 +499,10 @@
     <div class="top">
         
 <p>
-    <span id="busuanzi_container_site_uv" style="display:none">
+    <span id="busuanzi_container_site_uv" style='display:none'>
         站点总访客数：<span id="busuanzi_value_site_uv"></span>
     </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
+    <span id="busuanzi_container_site_pv" style='display:none'>
         站点总访问量：<span id="busuanzi_value_site_pv"></span>
     </span>
 </p>
@@ -499,7 +534,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&pic=http://blog.hzebin.cn/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -509,22 +544,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&title=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/&via=http://blog.hzebin.cn" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Centos下Nginx安装与配置》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/&via=http://github.com/hzebin" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://blog.hzebin.cn/2019/01/30/Centos下Nginx安装与配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2019/01/30/Centos下Nginx安装与配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -535,7 +570,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3awa7iQAwEQP7/p1lpryyh2868h1Y1J0QgmZpDbNl+POL1/LuSq6+fX//7+v27+z9f1uPEwsPDwxtt/d26fkyCuT6I6+fe8F88PDy8Y7zZ7fav8vwQ80CCh4eH9z289l/X37QpMh4eHt7/wZu9xPO0Gw8PD++beUkx4jqBzq/OgsfxWgseHh5eVyMdprO/9flgfw8PDw9v0VVvi7b7cYS8NBztFg8PD+8ALx8LaFPw67R4li7nUSDqyOHh4eGNeEmxIGcnpPyw2qv/2D8eHh7eAd4swb13sKBNmtv2Gx4eHt69vPYP+fjULMneBJ63cQ8PDw/vGK/tJbXJdz5KddfgAh4eHt4JXt6UasenZmWO2REnV/Hw8PDu4s1GBPJXfEta9fHeFSPw8PDwjvHytn2b4M4KsvkxvU2+8fDw8I7x9uXUtvC6Gd7Kd4iHh4d3mpc/sk3B8+fmo1TR/fHw8PCO8doSbTuYNawol6NdURkXDw8Pb82btfzb4YDN6EA+svD2WXh4eHi38jZDTm2LK0/Q22GCor+Hh4eHdytvVhTYtL5mIaQ4IDw8PLwDvLYlP2v5J3fYjCZ8+A0eHh7erbw8MOQJ92yjecDIE248PDy8E7xZKytPapNUezZYUFvw8PDwDvDaUmm7obsGvPJEHw8PD+8E764Sw+alnxcmknIwHh4e3k/yNqNUbSF4E0jyxhgeHh7eCd5smCm/XXJkbWjZlI/x8PDw9rxnufLNteD8UIr94OHh4R3gzTrvmwZYjt+EkxqJh4eHV/L2jai8PHGunPFhJgIPDw/vAG9TSmiPpm16bYIWHh4e3u/y8pLrLBi0xYui4oKHh4f3Zby2lZW/7pPj+3B/PDw8vGO8TVo8a/knQaItguDh4eH9DG/WAGtf/bNftmMEw4WHh4eX8v4ATNtUuYcAapIAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3aQW7jMAwF0Nz/0h1gVgM0tj9JsekAzyvDdSQ9FQgZUq9XfH39vf69/34l71+NfDXa/SzHLjw8PLzW0vNpvgPuR7vfrPsRkicPM+Lh4eGt8XrB4B589WSycfk7eHh4eL+BN7m/Z+SpOR4eHt7/yKv+dRIAPhAY8PDw8GJeNV2eJMq90u16rQUPDw8v5vUaYJ+9X+/v4eHh4bW66ntB4v79XtPrzWrx8PDwFnh5Cts7jJU/rx4+yLcJDw8Pb4/XW3T1U3mpIv8HPBSR8fDw8H6QlyTBvSZZMn41fX9IqfHw8PAO8eZf3/MDAYuBAQ8PD28t58yT4KTxX0Xmc+Uh6lV9FQ8PD6/Iy8NDnkDPU+TqO+UqNR4eHl6L12vb98JDrwGWJ+WjncDDw8Nr8SbtqFPHAiYF5UKtBQ8PD+8or5oWH87uB9/wb0bGw8PDW+blX/29ouo8dS4fPsDDw8Nb4M1/v0/u8/ZYNYnHw8PD2+NNAkMhtS0Gg145+HDcw8PDwwuy1slRp2os6pWJk2LHw/kIPDw8vDEvmbiZmwdJc7UMkTfb8PDw8PZ41ZDQW2Iv5LxOXXh4eHhHedWCQg82qS5Xt/5N3MPDw8Nb400OVPWWNS83PFDx8PDwFninDjZVl14dOSnsFk5G4OHh4Q141VZT3rzPG2A5qfw+Hh4e3g/yJunypCVWTdYfZsTDw8Nb4OWJcrUEkC+6mfu3Cih4eHh4c95X8eqxJ6Xh/BDYm0CFh4eHt8CbJL6TpSeNsfz+wIEtPDw8vCKvdzSq16aqFhEmQQgPDw9vm9crTPRaZac2KApOeHh4eB/l5SWJ3nZUW1xR+w0PDw/vF/CqRYTqXL0NvdxKPDw8vDXevNyQb0GeducF4ssneHh4eAu8agOsl+BWPzU/soCHh4e3wPsDcZPaT/2/NEEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
