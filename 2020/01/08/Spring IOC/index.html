@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Spring IOC | Hzebin 黄泽彬的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Spring,IOC">
+    <meta name="description" content="Spring IOCSpring IOC的底层原理：工厂模式 + 反射 + 配置文件 【为了减少程序之间的耦合性】 IOC (Inverse of Control)控制反转，将原本在程序中手动创建的对象（例如UserService）的控制权，交由Spring框架管理。 DI(Dependency Injection)依赖注入，就是在Spring创建这个对象的过程中，将这个对象所依赖的属性注入进去。">
+<meta name="keywords" content="Spring,IOC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring IOC">
+<meta property="og:url" content="http://github.com/hzebin/2020/01/08/Spring IOC/index.html">
+<meta property="og:site_name" content="Hzebin 黄泽彬的博客">
+<meta property="og:description" content="Spring IOCSpring IOC的底层原理：工厂模式 + 反射 + 配置文件 【为了减少程序之间的耦合性】 IOC (Inverse of Control)控制反转，将原本在程序中手动创建的对象（例如UserService）的控制权，交由Spring框架管理。 DI(Dependency Injection)依赖注入，就是在Spring创建这个对象的过程中，将这个对象所依赖的属性注入进去。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2020/01/08/U3ROa5fnCNIZurv.png">
+<meta property="og:updated_time" content="2020-01-08T12:51:26.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring IOC">
+<meta name="twitter:description" content="Spring IOCSpring IOC的底层原理：工厂模式 + 反射 + 配置文件 【为了减少程序之间的耦合性】 IOC (Inverse of Control)控制反转，将原本在程序中手动创建的对象（例如UserService）的控制权，交由Spring框架管理。 DI(Dependency Injection)依赖注入，就是在Spring创建这个对象的过程中，将这个对象所依赖的属性注入进去。">
+<meta name="twitter:image" content="https://i.loli.net/2020/01/08/U3ROa5fnCNIZurv.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Hzebin 黄泽彬的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+	<meta name="google-site-verification" content="eAXXb43fsX6NPGfUvts-Al_uzs7cWUWQtIg9C-qUAY4">
+	
+	<script>
+		var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?33409547ad70871e523a243cd3882005";
+				var s = document.getElementsByTagName("script")[0]; 
+				s.parentNode.insertBefore(hm, s);
+			})();
+	</script>
+
+	
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Huang Zebin</h5>
+          <a href="mailto:1747132327@qq.com" title="1747132327@qq.com" class="mail">1747132327@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/hzebin" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/Huang2016SCJ" target="_blank" >
+                <i class="icon icon-lg icon-code"></i>
+                CSDN算法刷题本
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/liuyan"  >
+                <i class="icon icon-lg icon-clipboard"></i>
+                留言板
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/links"  >
+                <i class="icon icon-lg icon-link"></i>
+                友情链接
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/footprint"  >
+                <i class="icon icon-lg icon-plane"></i>
+                成长足迹
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Spring IOC</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Spring IOC</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-01-08T12:51:26.595Z" itemprop="datePublished" class="page-time">
+  2020-01-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Spring-IOC"><span class="post-toc-number">1.</span> <span class="post-toc-text">Spring IOC</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Spring的Bean管理-XML方式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Spring的Bean管理(XML方式)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bean配置里的属性："><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Bean配置里的属性：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring的属性注入–构造方法注入"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Spring的属性注入–构造方法注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring的属性注入–set方法注入"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Spring的属性注入–set方法注入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring的属性注入–p名称空间"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">Spring的属性注入–p名称空间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring的属性注入–SpEL注入-Spring-expresssion-language"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">Spring的属性注入–SpEL注入(Spring expresssion language)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Spring的复杂类型的属性注入"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">Spring的复杂类型的属性注入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用注解定义Bean"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用注解定义Bean</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#XML与注解整合开发"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">XML与注解整合开发</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Spring IOC"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Spring IOC</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-01-08 20:51:26" datetime="2020-01-08T12:51:26.595Z"  itemprop="datePublished">2020-01-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC"></a>Spring IOC</h1><p>Spring IOC的底层原理：<strong>工厂模式 + 反射 + 配置文件</strong> 【为了减少程序之间的耦合性】</p>
+<p><strong>IOC (Inverse of Control)控制反转</strong>，将原本在程序中手动创建的对象（例如UserService）的控制权，交由Spring框架管理。</p>
+<p><strong>DI(Dependency Injection)依赖注入</strong>，就是在Spring创建这个对象的过程中，将这个对象所依赖的<strong>属性</strong>注入进去。</p>
+<p>使用Spring IOC需要导入的jar包</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 四个核心包</span></span><br><span class="line">spring-beans</span><br><span class="line">spring-context</span><br><span class="line">spring-core</span><br><span class="line">spring-expression</span><br><span class="line"><span class="comment">// 还要引入</span></span><br><span class="line">commons-logging</span><br><span class="line">log4j</span><br><span class="line">junit</span><br></pre></td></tr></table></figure>
+
+<h2 id="Spring的Bean管理-XML方式"><a href="#Spring的Bean管理-XML方式" class="headerlink" title="Spring的Bean管理(XML方式)"></a>Spring的Bean管理(XML方式)</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--applicationContext.xml配置文件--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Bean的实例化有三种方式：</p>
+<ol>
+<li>采用无参数的构造方法方式</li>
+<li>静态工厂的实例化方式</li>
+<li>实例工厂实例化</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Bean实例化的三种方式==================================================--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--1.采用无参数的构造方法的方式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bean1"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo2.Bean1"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--2.静态工厂的方式,因为是静态方法，所以可以用类.方法直接使用--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bean2"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo2.Bean2Factory"</span> <span class="attr">factory-method</span>=<span class="string">"createBean2"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--3.实例工厂的方式--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bean3Factory"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo2.Bean3Factory"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bean3"</span> <span class="attr">factory-bean</span>=<span class="string">"bean3Factory"</span> <span class="attr">factory-method</span>=<span class="string">"createBean3"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Bean配置里的属性："><a href="#Bean配置里的属性：" class="headerlink" title="Bean配置里的属性："></a>Bean配置里的属性：</h3><p><strong>id和name</strong>:</p>
+<p>id和name效果是一样的。一般情况下装配一个Bean时，通过指定一个id属性作为Bean的名称。</p>
+<p>id属性在IOC容器中必须是唯一的。</p>
+<p>如果Bean的名称中含有特殊字符（例如name=”/studentService”），就要改为使用name属性（id不能含有特殊字符）。</p>
+<p><strong>class</strong>:</p>
+<p>class用于设置一个类的完全路径名称，主要的作用是给IOC容器生成类的实例。</p>
+<p><strong>Bean的作用域属性scope</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>singleton（默认情况下是<strong>单例</strong>）</td>
+<td>在SpringIOC容器中仅存在一个Bean实例，Bean以单实例的方式存在</td>
+</tr>
+<tr>
+<td>prototype（<strong>多例</strong>）</td>
+<td>每次调用getBean()时都会返回一个新的实例</td>
+</tr>
+<tr>
+<td>request</td>
+<td>每次HTTP请求都会创建一个新的Bean，该作用域只适合于WebApplicationContext环境</td>
+</tr>
+<tr>
+<td>session</td>
+<td>同一个HTTP Session共享一个Bean，不同的HTTP Session使用不同的Bean。该作用域只适合于WebApplicationContext环境</td>
+</tr>
+</tbody></table>
+<p><strong>init-method和destory-method属性</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.loli.net/2020/01/08/U3ROa5fnCNIZurv.png" alt="20190108A.png" title>
+                </div>
+                <div class="image-caption">20190108A.png</div>
+            </figure>
+
+
+
+<p>Tip:如果是多例的话，程序不知道销毁谁</p>
+<h3 id="Spring的属性注入–构造方法注入"><a href="#Spring的属性注入–构造方法注入" class="headerlink" title="Spring的属性注入–构造方法注入"></a>Spring的属性注入–构造方法注入</h3><ul>
+<li><p>通过构造方法注入Bean的属性值或依赖对象，它保证了Bean实例在实例化之后就可以使用了</p>
+</li>
+<li><p>构造器注入在<constructor-arg>元素里申明的属性</constructor-arg></p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--构造方法注入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"user"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.User"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"黄泽彬"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"22"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring的属性注入–set方法注入"><a href="#Spring的属性注入–set方法注入" class="headerlink" title="Spring的属性注入–set方法注入"></a>Spring的属性注入–set方法注入</h3><ul>
+<li>使用set方法注入，在Spring配置文件中，通过<property>设置注入的属性</property></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Person"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"熊君"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"22"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cat"</span> <span class="attr">ref</span>=<span class="string">"cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span>  <span class="comment">&lt;!--注入对象  ref为引用下面的bean的id--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cat"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring的属性注入–p名称空间"><a href="#Spring的属性注入–p名称空间" class="headerlink" title="Spring的属性注入–p名称空间"></a>Spring的属性注入–p名称空间</h3><ul>
+<li>为了简化XML文件配置，Spring2.5开始引入一个新的p名称空间</li>
+<li>p:&lt;属性名&gt; = “xxx” 引入常量值</li>
+<li>p:&lt;属性名&gt;-ref = “xxx” 引入其他Bean对象</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">需要在applicationContext.xml头部添加：</span><br><span class="line">xmlns:p="http://www.springframework.org/schema/p"</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cat"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Cat"</span> <span class="attr">p:name</span>=<span class="string">"小猫"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Person"</span> <span class="attr">p:name</span>=<span class="string">"胡文瀚"</span> <span class="attr">p:age</span>=<span class="string">"23"</span> <span class="attr">p:cat-ref</span>=<span class="string">"cat"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring的属性注入–SpEL注入-Spring-expresssion-language"><a href="#Spring的属性注入–SpEL注入-Spring-expresssion-language" class="headerlink" title="Spring的属性注入–SpEL注入(Spring expresssion language)"></a>Spring的属性注入–SpEL注入(Spring expresssion language)</h3><ul>
+<li><p>Spring表达式语言，对依赖注入进行简化</p>
+</li>
+<li><p>语法：  #{表达式}</p>
+</li>
+<li><p>&lt;bean id=”” value=”#{表达式}”</p>
+<ul>
+<li><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#&#123;'hello'&#125;  使用字符串</span><br><span class="line">#&#123;beanId&#125;  使用另一个bean</span><br><span class="line">#&#123;beanId.content.toUpperCase()&#125;  使用指定名属性，并使用方法</span><br><span class="line">#&#123;T(java.lang.Math).PI&#125;  使用静态字段或方法</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--Bean的SpEL注入方式属性注入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"category"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Category"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"#&#123;'服装'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"productInfo"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.ProductInfo"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"product"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo4.Product"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"#&#123;'裤子'&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--        &lt;property name="price" value="#&#123;299&#125;"&gt;&lt;/property&gt;  下面采用调用方法的方式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"price"</span> <span class="attr">value</span>=<span class="string">"#&#123;productInfo.calculatePrice()&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"category"</span> <span class="attr">value</span>=<span class="string">"#&#123;category&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Spring的复杂类型的属性注入"><a href="#Spring的复杂类型的属性注入" class="headerlink" title="Spring的复杂类型的属性注入"></a>Spring的复杂类型的属性注入</h3><p>类型包括：数组、List集合、Set集合、Map集合、Properties</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--复杂（集合）类型的属性注入--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"collectionBean"</span> <span class="attr">class</span>=<span class="string">"cn.hzebin.ioc.demo5.CollectionBean"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--数组类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"arrs"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>bbb<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>ccc<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--list类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"list"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">list</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>111<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>222<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>333<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">list</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--set类型--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"set"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>ddd<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>eee<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">value</span>&gt;</span>fff<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Map集合的属性注入--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"map"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"aaa"</span> <span class="attr">value</span>=<span class="string">"111"</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"bbb"</span> <span class="attr">value</span>=<span class="string">"222"</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"ccc"</span> <span class="attr">value</span>=<span class="string">"333"</span>&gt;</span><span class="tag">&lt;/<span class="name">entry</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--properties属性注入--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"properties"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"username"</span>&gt;</span>root<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"password"</span>&gt;</span>root1234<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用注解定义Bean"><a href="#使用注解定义Bean" class="headerlink" title="使用注解定义Bean"></a>使用注解定义Bean</h2><p>使用Spring注解的使用需要引入的jar包：spring-aop</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--applicationContext.xml配置文件--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 模板 xsd-configuration.html 40.2.8 the context schema--&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--开启注解扫描--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"cn.hzebin"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Component</td>
+<td>描述Spring框架中的Bean（相当于id）</td>
+</tr>
+<tr>
+<td>上面这个注解与下面的注解等价，推荐使用下面的注解</td>
+<td></td>
+</tr>
+<tr>
+<td>@Repository</td>
+<td>用于对Dao实现类进行标注</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>用于对Service实现类进行标注</td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>用于对Controller实现类进行标注</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Value(“”)</td>
+<td>给属性添加值的注解</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Autowired</td>
+<td>属性注入，默认按类型注入（id名不相同也行），也可以按id名称注入</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Autowired                                                                                                                                                                   @Qualifier(“userDao”)</td>
+<td>注入的类型和id名称都要相同</td>
+</tr>
+<tr>
+<td>上面的注解与下面的注解等价</td>
+<td></td>
+</tr>
+<tr>
+<td>@Resource(name = “”)</td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@PostConstruct</td>
+<td>初始化，当Bean被载入导容器的时候调用该方法，与init-method作用相同</td>
+</tr>
+<tr>
+<td>@PreDestroy</td>
+<td>销毁，当Bean从容器中删除的时候调用该方法（单例才有效，与destory-method作用相同）</td>
+</tr>
+<tr>
+<td>@Scope(“”)</td>
+<td>Bean的作用域</td>
+</tr>
+</tbody></table>
+<h2 id="XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用"><a href="#XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用" class="headerlink" title="XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用"></a>XML配置和注解各有优缺点，可以将XML配置与注解配置混合使用</h2><p>XML配置的优点：结构清晰、易于理解</p>
+<p>注解配置的优点：开发便捷、属性注入方便</p>
+<h3 id="XML与注解整合开发"><a href="#XML与注解整合开发" class="headerlink" title="XML与注解整合开发"></a>XML与注解整合开发</h3><p>【使用XML来管理类，使用注解来进行属性注入】</p>
+<p>使用步骤：</p>
+<ol>
+<li>引入context命名空间</li>
+<li>在配置文件中添加context:annotattion-config标签 【意思：开启属性注入注解，禁止类注解】</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-01-08T12:51:26.596Z" itemprop="dateUpdated">2020-01-08 20:51:26</time>
+</span><br>
+
+
+        
+        <a href="/2020/01/08/Spring IOC/" target="_blank" rel="external">http://github.com/hzebin/2020/01/08/Spring IOC/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://github.com/hzebin">
+            <img src="/img/avatar.jpg" alt="Huang Zebin">
+            Huang Zebin
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOC/">IOC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/">Spring</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2020/01/08/Spring IOC/&title=《Spring IOC》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2020/01/08/Spring IOC/&title=《Spring IOC》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2020/01/08/Spring IOC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring IOC》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2020/01/08/Spring IOC/&via=http://github.com/hzebin" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2020/01/08/Spring IOC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/12/30/JDBC连接数据库/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JDBC连接数据库</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "VqT1v8EC0zmGvHnF4Niwwnc6-gzGzoHsz",
+            appKey: "Qe3DgH3JtQjBIXPQGEzWN3p3",
+            avatar: "mm",
+            placeholder: "留言区--上面的三项选填，可直接评论(Can comment anonymously)",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Huang Zebin &copy; 2019 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://github.com/hzebin/2020/01/08/Spring IOC/&title=《Spring IOC》 — Hzebin 黄泽彬的博客&pic=http://github.com/hzebin/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://github.com/hzebin/2020/01/08/Spring IOC/&title=《Spring IOC》 — Hzebin 黄泽彬的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://github.com/hzebin/2020/01/08/Spring IOC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring IOC》 — Hzebin 黄泽彬的博客&url=http://github.com/hzebin/2020/01/08/Spring IOC/&via=http://github.com/hzebin" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://github.com/hzebin/2020/01/08/Spring IOC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3azYrDMAxF4b7/S2egq4ES51wpLUQ+XpVO6vibhbB+Xi+8jvf6/Obz+7PnP3/1/5mzzzcvGTJkPJZxLNf6GbLD2a84D+0jQ4aMDRjroHkWcHm4XD/f2U2GDBkyOgGRB19yZZQhQ4aMGmOd1vIgS3aQIUOGDBIQSaGtdn0k77otF5chQ8YDGWlj4Jefv9jfkCFDxkMYnbQzbWeuL4KtNFiGDBmjGWmymiafnRIbbx7IkCFjNoMXtvjgRdoEXSe06JwyZMjYgEECXJpF9o8bnESGDBmjGbVQ22lbdkbBLv4qQ4aMoYzadmmzs3+hDKqGMmTIGMqole9rvHSwAw2lyZAhYzQjTWv7hTPe8qxlrDJkyJjK6IxZpFfAtMAXD1vIkCFjNCMttNVId2EuRi5kyJAxjsEL+mlKmRbXeAsBdTlkyJAxgtFvMfLEtZbKBjMjMmTIGM1IL2S/SWJ5g1OGDBm7MWol+xo4Df0XnVgZMmSMZnyjTHZXyor2lyFDxmhGOuhQS25reHJtlSFDxg4MnnDGrcTG0Fh8bZUhQ8ZoBifxF3MwOlaaMMuQIWMc4wgXT0dJs7MW1uOqoQwZMh7OSMMcP1x60M7+MmTI2IFBgmztqtdpFaR4GTJk7MDgSWmnbRA3I0HZToYMGTLIFv2QnaasF8NhMmTI2JjBw2v/QkneKEOGjN0Yabgkh+6Pa/B/jQwZMmYz0sZArQFQC+g8uMuQIWMo4w9lO8J4GAL1GQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
