@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://github.com/hzebin/"/>
-  <updated>2020-04-29T09:26:42.453Z</updated>
+  <updated>2020-05-05T08:51:45.946Z</updated>
   <id>http://github.com/hzebin/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx--正反向代理与负载均衡</title>
+    <link href="http://github.com/hzebin/2020/05/05/Nginx--%E6%AD%A3%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <id>http://github.com/hzebin/2020/05/05/Nginx--正反向代理与负载均衡/</id>
+    <published>2020-05-05T08:52:02.371Z</published>
+    <updated>2020-05-05T08:51:45.946Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Nginx的产生"><a href="#Nginx的产生" class="headerlink" title="Nginx的产生"></a>Nginx的产生</h1><p>Nginx 同 Apache 一样都是一种 Web 服务器。基于 REST 架构风格，以统一资源描述符（Uniform Resources Identifier）URI 或者统一资源定位符（Uniform Resources Locator）URL 作为沟通依据，通过 HTTP 协议提供各种网络服务。</p><p>Nginx 使用基于事件驱动架构，使得其可以支持数以百万级别的 TCP 连接。Nginx 是一个跨平台服务器，可以运行在 Linux、Windows、FreeBSD、Solaris、AIX、Mac OS 等操作系统上。这些优秀的设计带来的极大的稳定性。</p><p>Nginx 是一款自由的、开源的、高性能的 HTTP 服务器和反向代理服务器；同时也是一个 IMAP、POP3、SMTP 代理服务器。</p><p>Nginx 可以作为一个 HTTP 服务器进行网站的发布处理，另外 Nginx 可以作为反向代理进行负载均衡的实现。</p><h1 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h1><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://i.loli.net/2020/05/05/gnS13zaVItYJQEL.png" alt="正向代理.png" title>                </div>                <div class="image-caption">正向代理.png</div>            </figure><p>上图表示的是正向代理的结构图，在正向代理中，Proxy 和 Client 同属于一个 LAN（图中方框内），隐藏了客户端信息。</p><p>Client客户端向Proxy代理服务器进行请求，而不是直接请求真正的Server服务器，代理服务器将客户端的请求发送给服务器，并接收服务器响应的内容，最后将接收到的响应内容发送给客户端。</p><p>正向代理的用途：访问原来无法访问的资源，如 Google。可以做缓存，加速访问资源。对客户端访问授权，上网进行认证。代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息。</p><h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://i.loli.net/2020/05/05/1gmpNb4ndDx7FG6.png" alt="反向代理.png" title>                </div>                <div class="image-caption">反向代理.png</div>            </figure><p>上图表示的是反向代理的结构图，在反向代理中，Proxy 和 Server 同属于一个 LAN（图中方框内），隐藏了服务端信息。</p><p>反向代理的作用：保证内网的安全，通常将反向代理作为公网访问地址，Web 服务器是内网。负载均衡，通过反向代理服务器来优化网站的负载。</p><h1 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h1><p>跨多个应用程序实例的负载平衡是一种用于优化资源利用率，最大化吞吐量，减少延迟和确保容错配置的常用技术。</p><p>可以将nginx用作非常有效的HTTP负载平衡器，以将流量分配到多个应用程序服务器，并使用nginx改善Web应用程序的性能，可伸缩性和可靠性。</p><p>使用nginx进行负载平衡的最简单配置如下所示：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    upstream myapp1 &#123;</span><br><span class="line">        server srv1.example.com;</span><br><span class="line">        server srv2.example.com;</span><br><span class="line">        server srv3.example.com;</span><br><span class="line">        <span class="comment"># 应用程序在上面三台服务器运行</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80;  <span class="comment">#监听80端口</span></span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://myapp1;  <span class="comment">#设置所有请求代理至服务器组myapp1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Nginx 支持的负载均衡机制如下3种方式：</p><p><strong><u>①weight 轮询（默认）</u></strong>：接收到的请求按照顺序逐一分配到不同的后端服务器，即使在使用过程中，某一台后端服务器宕机，Nginx 会自动将该服务器剔除出队列，请求受理情况不会受到任何影响。</p><p>这种方式下，可以给不同的后端服务器设置一个权重值（weight），用于调整不同的服务器上请求的分配率。权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际工作环境中不同的后端服务器硬件配置进行调整的。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">upstream myapp1 &#123;</span><br><span class="line">server srv1.example.com weight=3;</span><br><span class="line">server srv2.example.com;</span><br><span class="line">server srv3.example.com;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#上述配置中，每5个新请求将按以下方式分布在应用程序实例中：3个请求将定向到srv1，一个请求将定向到srv2，另一个将定向到srv3。</span></span><br></pre></td></tr></table></figure><p><u><strong>②ip_hash</strong></u>：每个请求按照发起客户端的 ip 的 hash 结果进行匹配，这样的算法下一个固定 ip 地址的客户端总会访问到同一个后端服务器，这也在一定程度上解决了集群部署环境下 Session 共享的问题。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream myapp1 &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server srv1.example.com;</span><br><span class="line">    server srv2.example.com;</span><br><span class="line">    server srv3.example.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong><u>③least-connected</u>（最少连接）</strong>：将下一个请求分配给活动连接最少的服务器，减少服务器因过多的请求而过载。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream myapp1 &#123;</span><br><span class="line">least_conn;</span><br><span class="line">server srv1.example.com;</span><br><span class="line">server srv2.example.com;</span><br><span class="line">server srv3.example.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Nginx的产生&quot;&gt;&lt;a href=&quot;#Nginx的产生&quot; class=&quot;headerlink&quot; title=&quot;Nginx的产生&quot;&gt;&lt;/a&gt;Nginx的产生&lt;/h1&gt;&lt;p&gt;Nginx 同 Apache 一样都是一种 Web 服务器。基于 REST 架构风格，以统一
+      
+    
+    </summary>
+    
+    
+      <category term="Nginx" scheme="http://github.com/hzebin/tags/Nginx/"/>
+    
+      <category term="正向代理" scheme="http://github.com/hzebin/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86/"/>
+    
+      <category term="反向代理" scheme="http://github.com/hzebin/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/"/>
+    
+      <category term="负载均衡" scheme="http://github.com/hzebin/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式--工厂模式</title>
@@ -533,31 +562,6 @@
     
     
       <category term="web前端" scheme="http://github.com/hzebin/tags/web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>软件设计师之程序语言基础知识</title>
-    <link href="http://github.com/hzebin/2019/03/16/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88%E4%B9%8B%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://github.com/hzebin/2019/03/16/软件设计师之程序语言基础知识/</id>
-    <published>2019-03-16T12:46:28.000Z</published>
-    <updated>2019-03-16T14:36:02.553Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="低级语言和高级语言"><a href="#低级语言和高级语言" class="headerlink" title="低级语言和高级语言"></a>低级语言和高级语言</h3><p>(1)低级语言<br>机器语言和汇编语言称为低级语言。<br>&emsp;&emsp;机器语言指0、1组成的机器指令序列<br>&emsp;&emsp;汇编语言指用符号表示指令的语言<br>&emsp;&emsp;MOV AX,2<br>&emsp;&emsp;MOV BX,3<br>&emsp;&emsp;ADD AX,BX</p><p>(2)高级语言<br>&emsp;&emsp;高级语言是从人类的逻辑思维角度出发、面向各类应用的程序语言，抽象程度大大提高，需要编译成特定机器上的目标代码才能执行。这类语言与人们使用的自然语言比较接近，大大提高了  程序设计的效率。</p><h3 id="编译程序和解释程序"><a href="#编译程序和解释程序" class="headerlink" title="编译程序和解释程序"></a>编译程序和解释程序</h3><p>&emsp;&emsp;高级语言或汇编语言编写的程序称为源程序，源程序不能直接  在计算机上执行。<br>&emsp;&emsp;如果源程序是汇编语言编写的，则需要一个称为汇编程序  的翻译程序将其翻译成目标程序，然后才能执行。<br>&emsp;&emsp;如果源程序是为高级语言时，这个翻译程序称为编译程序<br>&emsp;&emsp;按源程序中语句的执行顺序，逐条翻译并立即执行相关功  能的处理程序、称为解释程序。</p><p>程序的执行方式：<br>1、编译执行：按编译方式在计算机上执行用高级语言编写的  程序，需经过两个阶段：<br>编译阶段，把源程序翻译为目标程序； 运行阶段，真正执行此目标程序。<br>&emsp;&emsp;优点：执行效率高、占用资源小。<br>&emsp;&emsp;缺点：兼容性差。<br>2、解释执行：源程序的每个语句一经解释就立即执行。<br>&emsp;&emsp;优点：可移植性较好、开发速度较快、与用户通信方便。<br>&emsp;&emsp;缺点：效率低。<br><img src alt="图20190316-1-A"></p><h2 id="编译系统基本原理"><a href="#编译系统基本原理" class="headerlink" title="编译系统基本原理"></a>编译系统基本原理</h2><p>编译程序的工作过程可以分为6个阶段：词法分析、语法分析、语义分析、中间代码生成、代码优化、目标代码生成。</p><p>①词法分析阶段<br>输入源程序，对构成源程序的字符串进行扫描和分解，识别  出一个个的单词，删掉无用信息，报告分析时的错误。<br>一个程序语言的基本语法符号分为五类：关键字、标识符、  常量、运算符、界符等<br>词法分析器所输出单词符号常常表示成如下的二元式：<br>(单词种别，单词符号的属性值)<br>描述词法规则通常用：正规式和有限自动机</p><p>2、状态转换图<br>状态转换图是状态有限的有向图，用圆圈表示结点状态，结  点之间有向边代表状态转换，有向边上可标记字符，表示前  一状态接受某一个字符之后的状态转移。<br>&emsp;&emsp;下图表示在状态i下的状态转换：<br>&emsp;&emsp;若输入字符为x，则读入x并转换到状态j<br>&emsp;&emsp;若输入字符为y，则读入y并转换到状态k<br><img src alt="图20190316-1-B"></p><p>状态转换图的功能<br>&emsp;&emsp;用于识别一定字符串<br>状态转换图的要求<br>&emsp;&emsp;状态（即结点）个数有限<br>&emsp;&emsp;至少一个初始状态，若干终止状态<br>&emsp;&emsp;每条边上标有字符（也可以是空字符）</p><p>状态转换图的表示习惯<br>&emsp;&emsp;初始状态用”○”表示<br>&emsp;&emsp;非终止状态用”○”表示<br>&emsp;&emsp;状态之间的跳转用含有字符的有向边表示<br>&emsp;&emsp;终止状态用”◎”表示<br>&emsp;&emsp;多读进一个字符用”*”表示</p><p>3、正规表达式与正规集（定义和运算）<br>状态转换图可以构造词法分析程序，但属于非形式化描述 正规表达式（简称正规式）是词法分析的形式化表示方法。  所谓形式化的方法，是指用一整套带有严格规定的符号体系  来描述问题的方法。<br>&emsp;&emsp;优点：更加清晰和准确</p><p>正规式与正规集的递归定义：<br>1、ε和Φ都是字母表∑上的正规式，它们所表示的正规集分别为{ε}和Φ；<br>2、任何a∈∑，a是∑上的一个正规式，它所表示的正规集为{a}；<br>3、<br><img src alt="图20190316-1-C"><br>仅由有限次使用上述三步骤而得到的表达式才是∑上的正规式。仅由这  些正规式所表示的子集才是∑上的正规集。</p><p>正规式定义中<br>“|”读为“或<br>“·”读为“连接”<br>“*”读为”闭包”（即，任意有限次的自重复连接）</p><p><img src alt="图20190316-1-D"></p><h2 id="程序语言的控制结构"><a href="#程序语言的控制结构" class="headerlink" title="程序语言的控制结构"></a>程序语言的控制结构</h2><p>–unfinish</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;基础知识&quot;&gt;&lt;a href=&quot;#基础知识&quot; class=&quot;headerlink&quot; title=&quot;基础知识&quot;&gt;&lt;/a&gt;基础知识&lt;/h2&gt;&lt;h3 id=&quot;低级语言和高级语言&quot;&gt;&lt;a href=&quot;#低级语言和高级语言&quot; class=&quot;headerlink&quot; title=
-      
-    
-    </summary>
-    
-    
-      <category term="软件设计师" scheme="http://github.com/hzebin/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/"/>
-    
-      <category term="程序语言基础知识" scheme="http://github.com/hzebin/tags/%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
